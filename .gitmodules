@@ -1,6 +1,0 @@
-[submodule "mormannlab-hugo-src/themes/ananke"]
-	path = mormannlab-hugo-src/themes/ananke
-	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
-[submodule "mormannlab-hugo/themes/ananke"]
-	path = mormannlab-hugo/themes/ananke
-	url = https://github.com/theNewDynamic/gohugo-theme-ananke.git
