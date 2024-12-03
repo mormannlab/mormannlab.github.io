@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="pa3 pa4-ns nested-copy-line-height">
+  <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
+    {{ .Content }}
+  </section>
+
+  <!-- Flexbox Container for Rows, Centered -->
+  <aside class="flex flex-column justify-center items-center mt5">
+    {{ range .Paginator.Pages }}
+      <!-- Each Row -->
+      <div class="relative w-100 w-50-l mb4 bg-white br4 shadow-2 pa4" style="max-width: 90%; margin: 10px auto; display: flex; align-items: center;">
+
+        <!-- Circle Image -->
+        <div class="flex-none w-30-l w-40 mb3 mb0-l">
+          <div class="w5 h5 br-100 ba b--light-gray">
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 br-100" />
+          </div>
+        </div>
+
+        <!-- Text Content (Name, Description) -->
+        <div class="flex flex-column justify-center pl3">
+          <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
+          <p class="f6 f5-ns lh-copy">{{ .Params.description }}</p>
+          <!-- Read More Button (inline-block to stop stretching) -->
+          <div style="width: auto; display: inline-block;">
+            <a href="{{.Permalink}}" class="ba b--moon-gray bg-light-gray br2 color-inherit f7 hover-bg-moon-gray link mt2 ph3 pv1">
+              {{ $.Param "read_more_copy" | default (i18n "readMore") }}
+            </a>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </aside>
+
+  {{ template "_internal/pagination.html" . }}
+</article>
+{{ end }}
