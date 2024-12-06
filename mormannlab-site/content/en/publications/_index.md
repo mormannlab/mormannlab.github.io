@@ -1,6 +1,6 @@
 ---
 title: "Publications"
-date: 2017-03-02T12:00:00-05:00
+date: 2024-01-01T00:00:00Z
 weight: 2
 ---
-Articles are paginated with only three posts here for example. You can set the number of entries to show on this page with the "pagination" setting in the config file.
+Welcome to our publications page. Below you will find our research papers organized by year. Click on a publication to learn more or download the full paper.
