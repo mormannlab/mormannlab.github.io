@@ -12,9 +12,21 @@
   margin-bottom: 2rem;
   border-left: 4px solid #ccc;
   padding-left: 1rem;
-
 }
 
-.nested-links a{
+.nested-links a {
   overflow-wrap: break-word;
 }
+
+
+
+/* Custom styles for publication summary boxes */
+.paper-box {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.paper-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px var(--hover-shadow-color);
+}
+

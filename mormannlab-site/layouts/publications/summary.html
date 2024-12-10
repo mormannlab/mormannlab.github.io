@@ -1,6 +1,6 @@
-<div class="mb3 {{ $.Param "text_color" | default "mid-gray" }} overflow-hidden ba b--moon-gray br3 bg-light-gray shadow-1 paper-box" style="display: flex; align-items: stretch; min-height: 100px; transition: transform 0.3s, box-shadow 0.3s;">
+<div class="mb3 paper-box {{ $.Param "text_color" | default "mid-gray" }} overflow-hidden ba b--moon-gray br3 bg-light-gray shadow-1" style="display: flex; align-items: stretch; min-height: 100px;">
   <!-- Left Section (4/5 width) -->
-  <div style="flex: 4; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;"> <!-- Added justify-content for centering -->
+  <div style="flex: 4; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
     {{ if .Date }}
       <div class="f6">
         {{ .Date.Format "January 2, 2006" }}
@@ -10,7 +10,7 @@
       {{ .Title }}
     </h3>
     {{ with .Params.authors }}
-      {{ if gt (len .) 0 }} <!-- Check if authors array is not empty -->
+      {{ if gt (len .) 0 }}
         <p class="f6 i">
           {{ delimit . ", " }}
         </p>
@@ -19,7 +19,7 @@
   </div>
 
   <!-- Right Section (1/5 width) -->
-  <div style="flex: 1; display: flex; justify-content: center; align-items: center">
+  <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
     {{ with .Params.pdf }}
       <a href="{{ . }}" target="_blank" class="f6 link dim br2 ph3 pv2 ba b--blue bg-transparent blue">
         View PDF
@@ -28,14 +28,3 @@
   </div>
 </div>
 
-<style>
-  /* Magnifying effect on hover with a custom shadow color */
-  .paper-box:hover {
-    transform: scale(1.05); /* Slightly enlarge the box */
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4); /* Blue shadow effect */
-  }
-
-  .paper-box {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-</style>

@@ -43,8 +43,12 @@ background_color_class = "bg-blue"
 featured_image_class = "cover bg-top"
 cover_dimming_class = "bg-blue-60"
 recent_posts_number = 3
+# For hovering shadow color (injected in the layouts/partials/site-style.html)
+hover_shadow_color = "#007BFF" # Needs actual color code!
 
-  # Social media links for sharing
+
+
+# Social media links for sharing
 [params.ananke.social.share]
 networks = [
   "email",

@@ -1,5 +1,5 @@
 {{ with partialCached "func/style/GetMainCSS" "style/GetMainCSS" }}
-<link rel="stylesheet" href="{{ .RelPermalink }}" >
+<link rel="stylesheet" href="{{ .RelPermalink }}">
 {{ end }}
 
 {{ range site.Params.custom_css }}
@@ -7,3 +7,11 @@
     <link rel="stylesheet" href="{{ relURL (.) }}">
   {{ end }}
 {{ end }}
+
+<!-- Inject custom CSS variables dynamically -->
+<style>
+  :root {
+    --hover-shadow-color: {{ .Site.Params.hover_shadow_color | default "#007BFF" }};
+  }
+</style>
+

@@ -8,7 +8,7 @@
   <aside class="flex flex-column justify-center items-center mt5">
     {{ range .Paginator.Pages }}
       <!-- Each Row -->
-      <div class="relative w-100 w-50-l mb4 bg-white br4 shadow-2 pa4" style="max-width: 90%; margin: 10px auto; display: flex; align-items: center;">
+      <div class="relative w-100 w-50-l mb4 bg-white br4 shadow-2 pa4 paper-box" style="max-width: 90%; margin: 10px auto; display: flex; align-items: center;">
 
         <!-- Circle Image -->
         <div class="flex-none w-30-l w-40 mb3 mb0-l">
@@ -35,3 +35,4 @@
   {{ template "_internal/pagination.html" . }}
 </article>
 {{ end }}
+
