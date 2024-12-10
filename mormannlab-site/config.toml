@@ -44,7 +44,7 @@ featured_image_class = "cover bg-top"
 cover_dimming_class = "bg-blue-60"
 recent_posts_number = 3
 # For hovering shadow color (injected in the layouts/partials/site-style.html)
-hover_shadow_color = "#007BFF" # Needs actual color code!
+hover_shadow_color = "#007BFF" # Needs actual color code! #189AB4 #007BFF #05445E
 
 
 
