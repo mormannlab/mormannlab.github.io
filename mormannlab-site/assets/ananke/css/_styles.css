@@ -32,3 +32,39 @@
 
 
 
+/* Profile Card General Styling */
+.profile-card {
+  position: relative;
+  overflow: hidden;
+  width: 60%; /* Initial width */
+  transition: width 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+}
+
+.profile-card:hover {
+  width: 80%; /* Expanded width on hover */
+  transform: scale(1.05); /* Optional magnifying effect */
+  box-shadow: 0 8px 15px var(--hover-shadow-color);
+}
+
+/* Right Section: Hidden by Default */
+.profile-card .right-section {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Right Section: Visible on Hover */
+.profile-card:hover .right-section {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Left and Middle Sections Adjust on Hover */
+.profile-card:hover .left-section {
+  flex: 1;
+}
+
+.profile-card:hover .middle-section {
+  flex: 2;
+}
