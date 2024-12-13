@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>People on Mormann&#39;s Lab</title>
+    <title>Our Team on Mormann&#39;s Lab</title>
     <link>http://localhost:1313/people/</link>
-    <description>Recent content in People on Mormann&#39;s Lab</description>
+    <description>Recent content in Our Team on Mormann&#39;s Lab</description>
     <generator>Hugo</generator>
     <language>en-US</language>
     <atom:link href="http://localhost:1313/people/index.xml" rel="self" type="application/rss+xml" />

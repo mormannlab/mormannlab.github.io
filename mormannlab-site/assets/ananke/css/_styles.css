@@ -20,7 +20,7 @@
 
 
 
-/* Custom styles for publication summary boxes */
+/* Custom styles for magnifying effect on hover over the boxes */
 .paper-box {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -29,4 +29,6 @@
   transform: scale(1.05);
   box-shadow: 0 8px 20px var(--hover-shadow-color);
 }
+
+
 
