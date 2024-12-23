@@ -1,30 +1,26 @@
-<div class="mb3 paper-box {{ $.Param "text_color" | default "mid-gray" }} overflow-hidden ba b--moon-gray br3 bg-light-gray shadow-1" style="display: flex; align-items: stretch; min-height: 100px;">
-  <!-- Left Section (4/5 width) -->
-  <div style="flex: 4; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
+<div class="mb3 publication-box {{ $.Param "text_color" | default "mid-gray" }} ba b--moon-gray br3 bg-light-gray shadow-1" data-abstract="{{ .Params.abstract }}">
+  <!-- Left Section -->
+  <div class="left-section" style="padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
     {{ if .Date }}
-      <div class="f6">
-        {{ .Date.Format "January 2, 2006" }}
-      </div>
+      <div class="f6">{{ .Date.Format "January 2, 2006" }}</div>
     {{ end }}
-    <h3 class="f4 fw5 near-black mb2">
-      {{ .Title }}
-    </h3>
+    <h3 class="f4 fw5 near-black mb2">{{ .Title }}</h3>
     {{ with .Params.authors }}
       {{ if gt (len .) 0 }}
-        <p class="f6 i">
-          {{ delimit . ", " }}
-        </p>
+        <p class="f6 i">{{ delimit . ", " }}</p>
       {{ end }}
     {{ end }}
   </div>
 
-  <!-- Right Section (1/5 width) -->
-  <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+  <!-- Middle Section (Hidden by Default) -->
+  <div class="middle-section" style="padding: 1rem; align-items: center; justify-content: center; display: none;">
+    <p class="abstract f6 mid-gray mb0" style="white-space: pre-wrap;"></p>
+  </div>
+
+  <!-- Right Section -->
+  <div class="right-section" style="padding: 1rem; display: flex; justify-content: center; align-items: center;">
     {{ with .Params.pdf }}
-      <a href="{{ . }}" target="_blank" class="f6 link dim br2 ph3 pv2 ba b--blue bg-transparent blue">
-        View PDF
-      </a>
+      <a href="{{ . }}" target="_blank" class="f6 link dim br2 ph3 pv2 ba b--blue bg-transparent blue">View PDF</a>
     {{ end }}
   </div>
 </div>
-

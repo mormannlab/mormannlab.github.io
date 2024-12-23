@@ -20,18 +20,91 @@
 
 
 
-/* Custom styles for magnifying effect on hover over the boxes */
-.paper-box {
+/* Custom styles for magnifying effect on hover over the Research page boxes */
+.research-box {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.paper-box:hover {
+.research-box:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px var(--hover-shadow-color);
 }
 
 
 
+
+
+/* Custom Hover Effect for Publication Page Boxes */
+/* Publication Box Styling */
+.publication-box {
+  position: relative;
+  overflow: hidden;
+  width: 70%; /* Default width */
+  display: flex;
+  align-items: stretch;
+  transition: width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Default Section Flex Ratios */
+.publication-box .left-section {
+  flex: 4;
+  transition: flex 0.3s ease;
+}
+
+.publication-box .middle-section {
+  flex: 0; /* Hidden by default */
+  opacity: 0;
+  display: none; /* Prevent rendering until hover */
+  transition: flex 0.3s ease, opacity 0.3s ease;
+}
+
+.publication-box .right-section {
+  flex: 1;
+  transition: flex 0.3s ease;
+}
+
+/* Hover Effect for Publication Box */
+.publication-box:hover {
+  width: 100%; /* Expand the box */
+  transform: scale(1);
+  box-shadow: 0 8px 15px var(--hover-shadow-color);
+}
+
+.publication-box:hover .left-section {
+  flex: 2; /* Shrinks to make space for the middle section */
+}
+
+.publication-box:hover .middle-section {
+  flex: 2; /* Becomes visible */
+  opacity: 1;
+  display: flex; /* Ensures content renders */
+}
+
+.publication-box:hover .right-section {
+  flex: 1; /* Stays the same */
+}
+
+/* Optional: Add a slight animation to the appearance of the middle section text */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.publication-box:hover .abstract {
+  display: block;
+  animation: typing 2s steps(50, end) forwards;
+}
+
+
+
+
+
+
+/* Custom Hover Effect for Our Team Page Boxes */
 /* Profile Card General Styling */
 .profile-card {
   position: relative;

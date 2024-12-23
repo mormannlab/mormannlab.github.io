@@ -1,12 +1,12 @@
 {{ define "main" }}
 <article class="pa3 pa4-ns nested-copy-line-height">
   <!-- Introductory Text as Normal Text -->
-  <section class="cf pv3 pv4-l f4 tj lh-copy" style="max-width: 60%; margin: 0 auto;">
+  <section class="cf pv3 pv4-l f4 tj lh-copy" style="max-width: 80%; margin: 0 auto;">
     {{ .Content }}
   </section>
 
   <!-- Group Publications by Year -->
-  <aside class="flex flex-column mt5" style="max-width: 60%; margin: 0 auto;">
+  <aside class="flex flex-column mt5" style="max-width: 80%; margin: 0 auto;">
     {{ $publications := .Pages.GroupByDate "2006" }} <!-- Group by Year -->
     {{ range $publications }}
       <div class="w-100 mb5">
@@ -24,3 +24,5 @@
   </aside>
 </article>
 {{ end }}
+
+
