@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const abstractContainer = middleSection.querySelector(".abstract");
     let typingInterval; // Store the interval ID for each box
 
+    const maxLines = 4; // Maximum number of lines to display
+    const lineHeight = 1.5; // Ensure this matches the CSS `line-height` in `em`
+    const fontSize = 16; // Font size in pixels
+    const maxHeight = maxLines * lineHeight * fontSize; // Calculate maximum height in pixels
+
     box.addEventListener("mouseenter", () => {
       if (abstractText && abstractContainer) {
         // Clear any existing interval
@@ -16,15 +21,22 @@ document.addEventListener("DOMContentLoaded", function () {
         abstractContainer.textContent = "";
         middleSection.style.display = "flex";
 
-        // Typing effect
+        // Typing effect with height check
         let i = 0;
+        let currentText = "";
         typingInterval = setInterval(() => {
-          abstractContainer.textContent += abstractText[i];
-          i++;
-          if (i >= abstractText.length) {
-            clearInterval(typingInterval); // Clear interval once text is fully typed
+          currentText += abstractText[i] || "";
+          abstractContainer.textContent = currentText;
+
+          // Check if the content exceeds the allowed height
+          if (abstractContainer.scrollHeight > maxHeight || i >= abstractText.length - 1) {
+            clearInterval(typingInterval); // Stop typing
+            if (i < abstractText.length - 1) {
+              abstractContainer.textContent = currentText.trim() + "..."; // Add ellipsis if truncated
+            }
           }
-        }, 50); // Typing speed
+          i++;
+        }, 30); // Typing speed
       }
     });
 

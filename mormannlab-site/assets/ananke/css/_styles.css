@@ -84,7 +84,7 @@
   flex: 1; /* Stays the same */
 }
 
-/* Optional: Add a slight animation to the appearance of the middle section text */
+/* Animation to the appearance of the middle section text */
 @keyframes typing {
   from {
     width: 0;
@@ -93,10 +93,17 @@
     width: 100%;
   }
 }
+ 
+/* Abstract Text */
+.publication-box .abstract {
+    margin: 0;
+    line-height: 1.5;
+    text-align: justify;
+}
 
 .publication-box:hover .abstract {
   display: block;
-  animation: typing 2s steps(50, end) forwards;
+  animation: typing 1s steps(30, end) forwards;
 }
 
 
