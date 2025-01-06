@@ -1,3 +1,7 @@
 {{/* For User's overwrite */}}
 {{ $abstractTyping := resources.Get "ananke/js/abstract-typing.js" | resources.Minify }}
 <script src="{{ $abstractTyping.RelPermalink }}" defer></script>
+
+{{ $backToTop := resources.Get "ananke/js/back-to-top.js" | resources.Minify }}
+<script src="{{ $backToTop.RelPermalink }}" defer></script>
+
