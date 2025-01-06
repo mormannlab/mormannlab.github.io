@@ -7,9 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const abstractContainer = middleSection.querySelector(".abstract");
     let typingInterval; // Store the interval ID for each box
 
-    const maxLines = 4; // Maximum number of lines to display
+    const maxLines = 6; // Maximum number of lines to display
     const lineHeight = 1.5; // Ensure this matches the CSS `line-height` in `em`
-    const fontSize = 16; // Font size in pixels
+    const fontSize = 14; // Font size in pixels
     const maxHeight = maxLines * lineHeight * fontSize; // Calculate maximum height in pixels
 
     box.addEventListener("mouseenter", () => {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
           i++;
-        }, 30); // Typing speed
+        }, 10); // Typing speed
       }
     });
 

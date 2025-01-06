@@ -59,6 +59,7 @@
 }
 
 .publication-box .right-section {
+  opacity: 0;
   flex: 1;
   transition: flex 0.3s ease;
 }
@@ -81,6 +82,7 @@
 }
 
 .publication-box:hover .right-section {
+  opacity: 1;
   flex: 1; /* Stays the same */
 }
 
@@ -103,7 +105,7 @@
 
 .publication-box:hover .abstract {
   display: block;
-  animation: typing 1s steps(30, end) forwards;
+  animation: typing 0.2s steps(10, end) forwards;
 }
 
 
