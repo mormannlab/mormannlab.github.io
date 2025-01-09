@@ -20,6 +20,70 @@
 
 
 
+
+/* Custom styles for site featured image (Background Image) */
+
+.cover.bg-top {
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-color: black;
+    background-position: center; /* Centers the image vertically and horizontally */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 60vh; /* Ensures it takes up the full viewport height */
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+
+
+
+
+/* Custom styles for header text banner */
+/* Header Text Container Styling */
+.header-text-container {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.09));
+    padding: 1rem;
+    margin-top: 0rem;
+}
+
+/* Header Text Content Styling */
+.header-text-content {
+    padding: 0 1.5rem;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.header-description {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #d1d1d1;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+
+
+
+
+/* Custom styles for Navigation bar */
+.navbar-gradient {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.7));
+    padding: 1rem 2rem; /* Adjust padding as needed */
+    position: relative;
+    z-index: 1000;
+}
+
+
+
+
+
+
+
 /* Custom styles for magnifying effect on hover over the Research page boxes */
 .research-box {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
