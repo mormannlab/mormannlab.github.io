@@ -84,6 +84,41 @@
 
 
 
+
+/* Custom styles for Logo on Navigation bar */
+/* Default Logo Styling */
+.logo {
+    display: inline-block;
+    width: 200px; /* Adjust width as needed */
+    height: 70px; /* Adjust height as needed */
+    background-image: url('/images/logo/logo_gray.png'); /* Default logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Hover Logo Styling */
+.logo:hover {
+    background-image: url('/images/logo/logo_color.png'); /* Colored version logo */
+}
+
+/* Responsive Logo Styling */
+@media (max-width: 768px) {
+    .logo {
+        width: 150px; /* Smaller logo for smaller screens */
+        height: 50px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 /* Custom styles for magnifying effect on hover over the Research page boxes */
 .research-box {
   transition: transform 0.2s ease, box-shadow 0.2s ease;

@@ -1,5 +1,6 @@
 ---
 title: "Publications"
+omit_header_text: false
 date: 2024-01-01T00:00:00Z
 weight: 2
 ---
