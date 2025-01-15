@@ -1,16 +1,6 @@
 ---
-title: "Topic 2"
-description: "A brief description of what this research topic is about."
-image: "/images/notebook.jpg"
+title: "Cognitive Neurophysiology"
+description: "We are interested in the neurobiology of perception and memory. We explore neuronal behavior in the medial temporal lobe to understand how conscious percepts are transferred into episodic memory traces."
+image: "/images/example.jpg"
+priority: 1
 ---
-
-## Details of Topic 2
-
-This section provides an in-depth look at the research topic, methodologies, findings, etc. This section provides an in-depth look at the research topic, methodologies, findings, etc. This section provides an in-depth look at the research topic, methodologies, findings, etc. This section provides an in-depth look at the research topic, methodologies, findings, etc.
-
-## Goals
-- Goal 1: Explain the primary objective.
-- Goal 2: Highlight specific challenges.
-
-## Current Progress
-Discuss the progress made so far, including any major milestones or findings.

@@ -6,7 +6,8 @@
 
   <!-- Flexbox Container for Rows, Centered -->
   <aside class="flex flex-column justify-center items-center mt5">
-    {{ range .Paginator.Pages }}
+    {{ $sortedPages := .Paginator.Pages.ByParam "priority" }}
+    {{ range $sortedPages }}
       <!-- Each Row -->
       <div class="relative w-100 w-50-l mb4 bg-white br4 shadow-2 pa4 research-box" style="max-width: 90%; margin: 10px auto; display: flex; align-items: stretch;">
 
@@ -21,12 +22,6 @@
         <div style="flex: 2; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
           <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
           <p class="f6 f5-ns lh-copy">{{ .Params.description }}</p>
-          <!-- Read More Button -->
-          <div style="width: auto; display: flex;">
-            <a href="{{ .Permalink }}" target="_blank" class="f6 link dim br2 ph3 pv2 ba b--blue bg-transparent blue">
-              Read More
-            </a>
-          </div>
         </div>
       </div>
     {{ end }}

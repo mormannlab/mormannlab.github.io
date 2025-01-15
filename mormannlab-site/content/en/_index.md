@@ -1,5 +1,5 @@
 ---
-title: "Mormann Workgroup for Cognitive and Clinical Neurophysiology"
+title: "Mormann Lab for Cognitive and Clinical Neurophysiology"
 omit_header_text: false
 description: "Explore perception, memory, and epileptic mechanisms through neurophysiological studies."
 
