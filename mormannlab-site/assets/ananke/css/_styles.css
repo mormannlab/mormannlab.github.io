@@ -77,6 +77,17 @@
     position: relative;
     z-index: 1000;
 }
+/* Default Text Styling for Navigation Bar */
+.navbar-gradient a {
+    color: white; /* Default text color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect for Navigation Bar Text */
+.navbar-gradient a:hover {
+    color: #007BFF; /* Blue text color on hover */
+}
 
 
 

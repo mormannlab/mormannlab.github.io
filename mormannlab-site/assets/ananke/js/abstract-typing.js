@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
           i++;
-        }, 10); // Typing speed
+        }, 5); // Typing speed
       }
     });
 
