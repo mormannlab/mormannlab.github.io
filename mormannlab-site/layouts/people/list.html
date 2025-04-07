@@ -101,7 +101,57 @@
     </aside>
   {{ end }}
  
-  
+
+
+  <!-- Section for External Members -->
+  {{ $external_members := where .Pages "Params.type" "external_member" }}
+  {{ if $external_members }}
+    <aside class="flex flex-column justify-center items-center mt5">
+      <h2 class="f3 fw6 bb b--light-gray pb2 mb4">External Members</h2>
+      {{ range $external_members }}
+        <div class="relative profile-card mb4 bg-white br4 shadow-2 pa4 paper-box" style="margin: 15px auto; display: flex; align-items: stretch;">
+          <!-- Left Section -->
+          <div class="left-section" style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 1rem;">
+            <div class="w5 h5 br-100 ba b--moon-gray overflow-hidden">
+              <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 object-cover">
+            </div>
+          </div>
+
+          <!-- Middle Section -->
+          <div class="middle-section" style="flex: 3; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
+            <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
+            <p class="f6 i mid-gray mb3">{{ .Params.role }}</p>
+            <p class="f6 lh-copy">{{ .Params.description }}</p>
+          </div>
+
+          <!-- Right Section -->
+          <div class="right-section hidden-on-hover" style="flex: 1; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
+            {{ with .Params.email }}
+              <p class="f6 lh-copy mb2"><strong>Email:</strong> <a href="mailto:{{ . }}" class="link blue dim">{{ . }}</a></p>
+            {{ end }}
+            {{ with .Params.phone }}
+              <p class="f6 lh-copy mb2"><strong>Phone:</strong> {{ . }}</p>
+            {{ end }}
+            <p class="f6 fw6 mb2">Connect on:</p>
+            <div class="ananke-socials">
+              {{ with .Params.social_media }}
+                {{ range . }}
+                  <a href="{{ .url }}" target="_blank" rel="noopener" class="link dib mr2" title="Connect on {{ .platform }}">
+                    {{ $icon := resources.Get (printf "ananke/socials/%s.svg" .platform | lower) }}
+                    {{ with $icon }}<span class="icon">{{ .Content | safeHTML }}</span>{{ end }}
+                  </a>
+                {{ end }}
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </aside>
+  {{ end }}
+
+
+
+
   <!-- Section for Collaborators -->
   {{ $collaborators := where .Pages "Params.type" "collaborator" }}
   {{ if $collaborators }}
