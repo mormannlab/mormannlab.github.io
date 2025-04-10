@@ -6,14 +6,61 @@
     {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
     
     {{/* Check to see if the section is defined for ranging through it */}}
-    
+  
+  
     <!-- Why We Do It: Scroll-Reveal Quote -->
-    <section class="w-100 pv6 scroll-reveal-quote relative" id="why-we-do-it" style="position: relative; height: 6rem; margin-bottom: 6rem;">
+    <section class="w-100 pv6 scroll-reveal-quote relative" id="why-we-do-it" style="position: relative; height: 15rem; margin-bottom: 15rem;">
       <div class="tc f3 f2-ns fw6 i mid-gray ph3 ph5-l measure center">
         <span class="quote-question">Why we do it?</span>
         <span class="quote-answer">“To understand the brain is to understand ourselves.”</span>
       </div>
     </section>
+
+
+
+    <!-- Mini Highlights Section -->
+    <section class="w-100 pv4 bg-light-silver">
+      <div class="flex flex-column flex-row-ns justify-around items-center tc f5 f4-ns fw5 mid-gray ph3 ph5-l measure-wide center">
+
+        <!-- Research Topics -->
+        <div class="pa3">
+          <span role="img" aria-label="projects">🧪</span>
+          {{ len (where .Site.RegularPages "Section" "research") }} Research Topics
+        </div>
+
+        <!-- Team Members (Safe .File check) -->
+        <div class="pa3">
+          <span role="img" aria-label="team">👩‍🔬</span>
+          {{ $members := slice }}
+          {{ range .Site.Pages }}
+            {{ with .File }}
+              {{ if and (in .Path "people/members/") (in .Path "/_index.md") }}
+                {{ $members = $members | append . }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+
+          {{ $external := slice }}
+          {{ range .Site.Pages }}
+            {{ with .File }}
+              {{ if and (in .Path "people/external_members/") (in .Path "/_index.md") }}
+                {{ $external = $external | append . }}
+              {{ end }}
+            {{ end }}
+          {{ end }}
+
+          {{ add (len $members) (len $external) }} Team Members
+        </div>
+
+        <!-- Publications -->
+        <div class="pa3">
+          <span role="img" aria-label="papers">📄</span>
+          {{ len (where .Site.RegularPages "Section" "publications") }} Publications
+        </div>
+
+      </div>
+    </section>
+
 
     
     {{range ($mainSections)}}
