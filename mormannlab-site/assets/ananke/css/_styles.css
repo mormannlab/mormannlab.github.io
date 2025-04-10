@@ -19,6 +19,48 @@
 }
 
 
+/* Custom styles for splash page (Why we do it?) */
+.quote-question,
+.quote-answer {
+  transition: opacity 1s ease, transform 2s ease;
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  pointer-events: none;
+}
+
+/* Initial State */
+.quote-question {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  z-index: 2;
+}
+
+.quote-answer {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  z-index: 1;
+}
+
+/* When Revealed */
+.scroll-reveal-quote.revealed .quote-question {
+  opacity: 0;
+  transform: translate(-50%, -20px);
+  z-index: 1;
+}
+
+.scroll-reveal-quote.revealed .quote-answer {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  z-index: 2;
+}
+
+
+
 
 
 /* Custom styles for site featured image (Background Image) */

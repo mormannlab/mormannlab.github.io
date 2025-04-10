@@ -1,0 +1,44 @@
+{{ $featured_image := partial "func/GetFeaturedImage.html" . }}
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <!-- Left Section: Image (non-clickable) -->
+      {{ if $featured_image }}
+        <div class="{{ cond (eq $.Site.Language.LanguageDirection "rtl") "pl3-ns" "pr3-ns" }} mb4 mb0-ns w-100 w-40-ns">
+          <img src="{{ $featured_image }}" class="img" alt="image from {{ .Title }}">
+        </div>
+      {{ end }}
+      
+      <!-- Right Section: Text + Button -->
+      <div class="blah w-100{{ if $featured_image }} w-60-ns {{ cond (eq $.Site.Language.LanguageDirection "rtl") "pr3-ns" "pl3-ns" }}{{ end }}">
+        <h1 class="f3 fw1 athelas mt0 lh-title">{{ .Title }}</h1>
+        
+        {{ with .Params.authors }}
+          {{ if gt (len .) 0 }}
+            <p class="f6 i mid-gray mb2">{{ delimit . ", " }}</p>
+          {{ end }}
+        {{ end }}
+        
+        {{ if .Date }}
+          <div class="f6 mid-gray mb3">{{ .Date.Format "January 2, 2006" }}</div>
+        {{ end }}
+
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links mb3">
+          {{ .Summary }}
+        </div>
+
+        <!-- Blue button linking to .Params.pdf -->
+        {{ with .Params.pdf }}
+          <div style="display: flex; justify-content: flex-end;">
+            <a href="{{ . }}" target="_blank" class="f6 link dim br2 ph3 pv2 ba b--blue bg-transparent blue">
+              {{ $.Param "read_more_copy" | default (i18n "readMore") }}
+            </a>
+          </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</article>
+

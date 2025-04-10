@@ -6,6 +6,16 @@
     {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
     
     {{/* Check to see if the section is defined for ranging through it */}}
+    
+    <!-- Why We Do It: Scroll-Reveal Quote -->
+    <section class="w-100 pv6 scroll-reveal-quote relative" id="why-we-do-it" style="position: relative; height: 6rem; margin-bottom: 6rem;">
+      <div class="tc f3 f2-ns fw6 i mid-gray ph3 ph5-l measure center">
+        <span class="quote-question">Why we do it?</span>
+        <span class="quote-answer">“To understand the brain is to understand ourselves.”</span>
+      </div>
+    </section>
+
+    
     {{range ($mainSections)}}
     {{/* Derive the section name  */}}
     {{ $section_name := . }}
@@ -27,7 +37,7 @@
           {{/* Range through the first $n_posts items of the section */}}
           {{ range (first $n_posts $section) }}
             <div class="relative w-100 mb4">
-              {{ .Render "summary-with-image" }}
+              {{ .Render "splash-summary-with-image" }}
             </div>
           {{ end }}
         </section>

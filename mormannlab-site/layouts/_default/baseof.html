@@ -72,6 +72,9 @@
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
     
     <button id="backToTop" class="back-to-top" onclick="scrollToTop()">↑</button>
+    
+    {{ $script := resources.Get "ananke/js/why-we-do-it.js" | fingerprint }}
+    <script src="{{ $script.RelPermalink }}" defer></script>
 
   </body>
 </html>
