@@ -20,45 +20,31 @@
 
     <!-- Mini Highlights Section -->
     <section class="w-100 pv4 bg-light-silver">
-      <div class="flex flex-column flex-row-ns justify-around items-center tc f5 f4-ns fw5 mid-gray ph3 ph5-l measure-wide center">
+        <div class="flex flex-column flex-row-ns justify-around items-center tc f5 f4-ns fw5 mid-gray ph3 ph5-l measure-wide center">
 
-        <!-- Research Topics -->
-        <div class="pa3">
-          <span role="img" aria-label="projects">🧪</span>
-          {{ len (where .Site.RegularPages "Section" "research") }} Research Topics
+            <!-- Research Topics -->
+            <div class="pa3">
+                <span role="img" aria-label="projects">🧪</span>
+                {{ len (where .Site.RegularPages "Section" "research") }} Research Topics
+            </div>
+
+            <!-- Team Members -->
+            <div class="pa3">
+                <span role="img" aria-label="team">👩‍🔬</span>
+                {{ $membersDir := readDir "content/en/people/members" }}
+                {{ $externalDir := readDir "content/en/people/external_members" }}
+                {{ $memberCount := len $membersDir }}
+                {{ $externalCount := len $externalDir }}
+                {{ add $memberCount $externalCount }} Team Members
+            </div>
+
+            <!-- Publications -->
+            <div class="pa3">
+                <span role="img" aria-label="papers">📄</span>
+                {{ len (where .Site.RegularPages "Section" "publications") }} Publications
+            </div>
+
         </div>
-
-        <!-- Team Members (Safe .File check) -->
-        <div class="pa3">
-          <span role="img" aria-label="team">👩‍🔬</span>
-          {{ $members := slice }}
-          {{ range .Site.Pages }}
-            {{ with .File }}
-              {{ if and (in .Path "people/members/") (in .Path "/_index.md") }}
-                {{ $members = $members | append . }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-
-          {{ $external := slice }}
-          {{ range .Site.Pages }}
-            {{ with .File }}
-              {{ if and (in .Path "people/external_members/") (in .Path "/_index.md") }}
-                {{ $external = $external | append . }}
-              {{ end }}
-            {{ end }}
-          {{ end }}
-
-          {{ add (len $members) (len $external) }} Team Members
-        </div>
-
-        <!-- Publications -->
-        <div class="pa3">
-          <span role="img" aria-label="papers">📄</span>
-          {{ len (where .Site.RegularPages "Section" "publications") }} Publications
-        </div>
-
-      </div>
     </section>
 
 
