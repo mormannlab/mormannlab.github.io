@@ -1,6 +1,5 @@
 title = "Mormann's Lab"
 baseURL = "https://mormannlab.github.io/"
-publishDir = "docs"
 
 theme = "ananke"
 resourceDir = "../resources"
