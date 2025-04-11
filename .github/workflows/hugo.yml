@@ -55,9 +55,9 @@ jobs:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
           HUGO_ENVIRONMENT: production
         run: |
+          cd mormannlab-site
           hugo \
-            --source mormannlab-site \
-            --destination public \
+            --destination ../public \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
