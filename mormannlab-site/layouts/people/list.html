@@ -31,9 +31,11 @@
           {{ with .Params.email }}
             <p class="f6 lh-copy mb2"><strong>Email:</strong> <a href="mailto:{{ . }}" class="link blue dim">{{ . }}</a></p>
           {{ end }}
+          <!-- 
           {{ with .Params.phone }}
             <p class="f6 lh-copy mb2"><strong>Phone:</strong> {{ . }}</p>
           {{ end }}
+          -->
           <p class="f6 fw6 mb2">Connect on:</p>
           <div class="ananke-socials">
             {{ with .Params.social_media }}
@@ -81,9 +83,11 @@
             {{ with .Params.email }}
               <p class="f6 lh-copy mb2"><strong>Email:</strong> <a href="mailto:{{ . }}" class="link blue dim">{{ . }}</a></p>
             {{ end }}
+            <!-- 
             {{ with .Params.phone }}
               <p class="f6 lh-copy mb2"><strong>Phone:</strong> {{ . }}</p>
             {{ end }}
+            -->
             <p class="f6 fw6 mb2">Connect on:</p>
             <div class="ananke-socials">
               {{ with .Params.social_media }}
@@ -129,9 +133,11 @@
             {{ with .Params.email }}
               <p class="f6 lh-copy mb2"><strong>Email:</strong> <a href="mailto:{{ . }}" class="link blue dim">{{ . }}</a></p>
             {{ end }}
+            <!--
             {{ with .Params.phone }}
               <p class="f6 lh-copy mb2"><strong>Phone:</strong> {{ . }}</p>
             {{ end }}
+            -->
             <p class="f6 fw6 mb2">Connect on:</p>
             <div class="ananke-socials">
               {{ with .Params.social_media }}
@@ -169,7 +175,7 @@
             <p class="f6 mid-gray mb0">
               {{ $affiliation := .Params.affiliation }}
               {{ with .Params.affiliation_link }}
-                <a href="{{ . }}" class="link red dim">{{ $affiliation }}</a>
+                <a href="{{ . }}" class="link dim" style="color: #f09c04;">{{ $affiliation }}</a>
               {{ else }}
                 {{ $affiliation }}
               {{ end }}
