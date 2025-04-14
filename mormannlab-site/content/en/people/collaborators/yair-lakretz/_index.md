@@ -5,6 +5,7 @@ type: "collaborator"
 role: ""
 affiliation: "Prairie Institute for Artificial Intelligence"
 affiliation_link: "https://prairie-institute.fr"
+sortname: "Lakretz"
 social_media:
   - platform: "twitter"
     url: "https://x.com/lakretz"

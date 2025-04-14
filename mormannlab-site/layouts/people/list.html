@@ -159,7 +159,7 @@
 
 
   <!-- Section for Collaborators -->
-  {{ $collaborators := where .Pages "Params.type" "collaborator" }}
+  {{ $collaborators := sort (where .Pages "Params.type" "collaborator") "Params.sortname" }}
   {{ if $collaborators }}
   <aside class="mt5">
     <h2 class="f3 fw6 bb b--light-gray pb2 mb4 tc">Collaborators</h2>

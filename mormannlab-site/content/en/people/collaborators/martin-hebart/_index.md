@@ -5,6 +5,7 @@ type: "collaborator"
 role: ""
 affiliation: "Max Planck Institute for Human Cognitive and Brain Sciences"
 affiliation_link: "https://www.cbs.mpg.de"
+sortname: "Hebart"
 social_media:
   - platform: "twitter"
     url: "https://x.com/martin_hebart"

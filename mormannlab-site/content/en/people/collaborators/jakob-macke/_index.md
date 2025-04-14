@@ -5,6 +5,7 @@ type: "collaborator"
 role: "Principal Investigator"
 affiliation: "University of Tübingen, Cluster of Excellence: Machine Learning - New Perspectives for the Sciences"
 affiliation_link: "https://uni-tuebingen.de/en/research/core-research/cluster-of-excellence-machine-learning/home/"
+sortname: "Macke"
 social_media:
   - platform: "twitter"
     url: "https://x.com/jakhmack"

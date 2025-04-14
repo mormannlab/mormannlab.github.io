@@ -5,6 +5,7 @@ type: "collaborator"
 role: ""
 affiliation: "Dynamic Vision and Learning (DVL) Group, NVIDIA Research"
 affiliation_link: "https://research.nvidia.com/labs/dvl/"
+sortname: "Taixé"
 social_media:
   - platform: "twitter"
     url: "https://x.com/lealtaixe"

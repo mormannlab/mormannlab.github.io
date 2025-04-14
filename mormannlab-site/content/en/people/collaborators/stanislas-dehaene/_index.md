@@ -5,6 +5,7 @@ type: "collaborator"
 role: ""
 affiliation: "Collège de France"
 affiliation_link: "https://www.college-de-france.fr"
+sortname: "Dehaene"
 social_media:
   - platform: "twitter"
     url: "https://x.com/standehaene"

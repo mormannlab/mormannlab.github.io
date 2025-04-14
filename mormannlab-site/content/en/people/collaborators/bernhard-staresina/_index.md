@@ -5,6 +5,7 @@ type: "collaborator"
 role: ""
 affiliation: "University of Oxford, Department of Experimental Psychology"
 affiliation_link: "https://www.psy.ox.ac.uk"
+sortname: "Staresina"
 social_media:
   - platform: "twitter"
     url: "https://x.com/bstaresina"
