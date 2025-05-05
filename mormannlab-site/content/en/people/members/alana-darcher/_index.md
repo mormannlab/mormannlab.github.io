@@ -1,16 +1,19 @@
 ---
 title: "Alana Darcher"
-description: "A brief description of the person, their role, research interests, and contributions to the group."
+description: "Alana joined the lab in 2020 as a PhD student. She studies how movies and other naturalistic stimuli are processed by single neurons, in collaboration with Jakob Macke's group at the University of Tuebingen. Previously, she studied Neuroscience and Philosophy at Emory University and Systemic Neurosciences at Ludwig Maximilian University of Munich."
 type: "member"
-role: "Role in the Group" # Example: "Researcher" or "Head of Working Group"
-image: "/images/members/member-image.jpg" # Update the image path for the member
-email: "example.email@domain.com" # Update with the member's email
-phone: "+CountryCode PhoneNumber" # Update with the member's phone number
+role: "PhD"
+image: "/images/members/alana-darcher.jpg"
+email: "alana.darcher@ukbonn.de"
+website: "https://alanadarcher.com"
 social_media:
-  - platform: "linkedin" # Supported platforms: linkedin, github, twitter, etc.
-    url: "https://www.linkedin.com/in/example"
+  - platform: "linkedin"
+    url: "https://www.linkedin.com/in/alana-darcher/"
   - platform: "github"
-    url: "https://github.com/example"
-  - platform: "twitter"
-    url: "https://twitter.com/example"
+    url: "https://github.com/a-darcher"
+  - platform: "bsky"
+    url: "https://bsky.app/profile/alanadarcher.bsky.social"
+  - platform: "scholar"
+    url: "https://scholar.google.com/citations?user=Ka8_wU0AAAAJ&hl=en"
 ---
+

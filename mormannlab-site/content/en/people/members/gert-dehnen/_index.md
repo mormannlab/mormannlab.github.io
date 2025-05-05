@@ -1,9 +1,9 @@
 ---
-title: "Full Name"
+title: "Gert Dehnen"
 description: "A brief description of the person, their role, research interests, and contributions to the group."
 type: "member"
 role: "Role in the Group" # Example: "Researcher" or "Head of Working Group"
-image: "/images/members/member-image.jpg" # Update the image path for the member
+image: "/images/members/example.jpg" # Update the image path for the member
 email: "example.email@domain.com" # Update with the member's email
 phone: "+CountryCode PhoneNumber" # Update with the member's phone number
 social_media:

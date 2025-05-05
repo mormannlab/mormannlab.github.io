@@ -1,16 +1,14 @@
 ---
-title: "Full Name"
-description: "A brief description of the person, their role, research interests, and contributions to the group."
+title: "Yingjie Qin"
+description: "Yingjie studied medicine at Wuhan Tongji Medical School and Sichuan University in China and joined the lab at the end of 2021 as a PhD student. Currently she studies how  single neurons in the human medial temporal lobe (MTL) contribute to the learning and extinction of fear."
 type: "member"
-role: "Role in the Group" # Example: "Researcher" or "Head of Working Group"
-image: "/images/members/member-image.jpg" # Update the image path for the member
-email: "example.email@domain.com" # Update with the member's email
-phone: "+CountryCode PhoneNumber" # Update with the member's phone number
+role: "PhD"
+image: "/images/members/yingjie-qin.jpg"
+email: "Yingjie.Qin@ukbonn.de"
 social_media:
-  - platform: "linkedin" # Supported platforms: linkedin, github, twitter, etc.
-    url: "https://www.linkedin.com/in/example"
-  - platform: "github"
-    url: "https://github.com/example"
-  - platform: "twitter"
-    url: "https://twitter.com/example"
+  - platform: "linkedin"
+    url: "https://www.linkedin.com/in/yingjie-qin-572030330/"
+  - platform: "researchgate"
+    url: "https://www.researchgate.net/profile/Yingjie-Qin-2"
+
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Prof. Florian Mormann, MD, PhD"
+title: "Prof. Dr. Florian Mormann"
 description: "Prof. Dr. Florian Mormann leads the Cognitive and Clinical Neurophysiology workgroup, focusing on the neurobiology of perception and memory, as well as the pathophysiological mechanisms leading to epileptic seizures."
 type: "member"
 role: "Head of Working Group"
@@ -12,3 +12,4 @@ social_media:
   - platform: "github"
     url: "https://github.com/florian-mormann"
 ---
+

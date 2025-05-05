@@ -1,16 +1,16 @@
 ---
-title: "Full Name"
-description: "A brief description of the person, their role, research interests, and contributions to the group."
+title: "Ilona Vieten"
+description: "Ilona Vieten studied Neuroscience in Cologne and Göttingen. As a PhD student in the lab, she studies the involvement of human MTL structures in attentional processes and memory consolidation."
 type: "member"
-role: "Role in the Group" # Example: "Researcher" or "Head of Working Group"
-image: "/images/members/member-image.jpg" # Update the image path for the member
-email: "example.email@domain.com" # Update with the member's email
+role: "PhD" # Example: "Researcher" or "Head of Working Group"
+image: "/images/members/example.jpg" # Update the image path for the member
+email: "ilona.vieten@ukbonn.de" # Update with the member's email
 phone: "+CountryCode PhoneNumber" # Update with the member's phone number
 social_media:
-  - platform: "linkedin" # Supported platforms: linkedin, github, twitter, etc.
-    url: "https://www.linkedin.com/in/example"
-  - platform: "github"
-    url: "https://github.com/example"
-  - platform: "twitter"
-    url: "https://twitter.com/example"
+ #  - platform: "linkedin" # Supported platforms: linkedin, github, twitter, etc.
+ #   url: "https://www.linkedin.com/in/example"
+ # - platform: "github"
+ #   url: "https://github.com/example"
+  - platform: "bluesky"
+    url: "https://bsky.app/profile/ilonavieten.bsky.social"
 ---
