@@ -62,6 +62,138 @@
 
 
 
+/*Custom style for Splash summary timeline*/
+/* Timeline Container */
+.timeline-wrapper {
+  position: relative;
+  width: 100%; /* full screen width */
+  max-width: none; /* remove limit if needed */
+  margin: 5rem auto;
+  padding: 2rem 0;
+}
+
+/* Vertical Timeline Line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #00bcd4, #ff7043);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Entry Wrapper */
+.timeline-entry {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.timeline-entry.right {
+  flex-direction: row-reverse;
+}
+
+/* Hexagon Year Marker */
+.timeline-hex {
+  width: 70px;
+  height: 60px;
+  background-color: #00bcd4;
+  clip-path: polygon(
+    30% 0%, 70% 0%,
+    100% 50%,
+    70% 100%, 30% 100%,
+    0% 50%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  z-index: 2;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+
+.timeline-entry.left .timeline-hex {
+  position: absolute;
+  right: calc(50% + 50px); /* move it left of the center line */
+  transform: translateX(0); /* remove previous centering */
+}
+
+.timeline-entry.right .timeline-hex {
+  position: absolute;
+  left: calc(50% + 50px); /* move it right of the center line */
+  transform: translateX(0);
+}
+
+
+
+/* Content Box */
+.timeline-box {
+  width: 40%;
+  background: #fff;
+  padding: 1.5rem;
+  margin: 0 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  z-index: 2;
+  text-align: left;
+}
+
+
+/* Text Styles */
+.timeline-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-authors {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+/* Button */
+.timeline-btn {
+  border: 1px solid #00449E;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  color: #00449E;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.timeline-btn:hover {
+  background: #00449E;
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Custom styles for site featured image (Background Image) */
 
