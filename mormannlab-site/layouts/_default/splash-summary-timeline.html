@@ -1,53 +1,34 @@
-<div class="timeline-wrapper">
+<section class="timeline-container">
   <div class="timeline-line"></div>
+  {{ $pubs := where .Site.RegularPages "Section" "publications" }}
+  {{ $grouped := $pubs.GroupByDate "2006" "desc" }}
+  {{ range $index, $yearGroup := $grouped }}
+    {{ $stepClass := printf "step-%d" (add $index 1) }}
+    <div class="timeline-row {{ if modBool $index 2 }}reverse{{ end }} {{ $stepClass }}">
+      
+      <!-- Year hexagon with connector -->
+      <div class="timeline-col year">
+        <div class="hexagon {{ $stepClass }}"><span>{{ $yearGroup.Key }}</span></div>
 
-  {{ $pubDir := "content/en/publications" }}
-  {{ $yearFolders := readDir $pubDir }}
-  {{ $index := 0 }}
-  {{ $allPubs := where .Site.RegularPages "Section" "publications" }}
-
-  {{ range sort $yearFolders "Name" "desc" }}
-    {{ if .IsDir }}
-      {{ $year := .Name }}
-      {{ $yearPath := printf "%s/%s" $pubDir $year }}
-      {{ $files := readDir $yearPath }}
-      {{ $pubsForYear := slice }}
-
-      {{ range $files }}
-        {{ if (and (not .IsDir) (strings.HasSuffix .Name ".md")) }}
-          {{ $filename := .Name }}
-          {{ range $allPubs }}
-            {{ $parts := split .File.Path "/" }}
-            {{ $fileNameOnly := index $parts (sub (len $parts) 1) }}
-            {{ if and (in .File.Path $year) (eq $fileNameOnly $filename) }}
-              {{ $pubsForYear = union $pubsForYear (slice .) }}
-            {{ end }}
-          {{ end }}
-        {{ end }}
-      {{ end }}
-
-      {{ $pubCount := len $pubsForYear }}
-      {{ if gt $pubCount 0 }}
-        {{ $side := cond (mod $index 2 | eq 0) "left" "right" }}
-
-        <div class="timeline-entry {{ $side }}">
-          <div class="timeline-hex">
-            <span>{{ $year }}</span>
-          </div>
-          <div class="timeline-box">
-            <h2 class="timeline-title">{{ $pubCount }} publication{{ if ne $pubCount 1 }}s{{ end }}</h2>
-
-            <ul>
-              {{ range sort $pubsForYear "Date" "desc" }}
-                <li>{{ .Title }}</li>
-              {{ end }}
-            </ul>
-          </div>
+        <!-- Connector: o-------O-------o -->
+        <div class="connector">
+          <div class="line-dot left"></div>
+          <div class="center-dot"></div>
+          <div class="line-dot right"></div>
         </div>
+      </div>
 
-        {{ $index = add $index 1 }}
-      {{ end }}
-    {{ end }}
+      <!-- Publication list -->
+      <div class="timeline-col content">
+        <div class="timeline-box">
+          <ul>
+            {{ range $paper := $yearGroup.Pages }}
+              <li>{{ $paper.Title }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+
+    </div>
   {{ end }}
-</div>
-
+</section>

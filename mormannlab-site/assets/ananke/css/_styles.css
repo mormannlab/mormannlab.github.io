@@ -63,125 +63,287 @@
 
 
 /*Custom style for Splash summary timeline*/
-/* Timeline Container */
-.timeline-wrapper {
+/* === TIMELINE CONTAINER === */
+.timeline-container {
   position: relative;
-  width: 100%; /* full screen width */
-  max-width: none; /* remove limit if needed */
-  margin: 5rem auto;
-  padding: 2rem 0;
+  width: 90%;
+  margin: auto;
+  padding: 60px 0;
 }
 
-/* Vertical Timeline Line */
 .timeline-line {
   position: absolute;
   left: 50%;
   top: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #00bcd4, #ff7043);
+  background: linear-gradient(to bottom, #2a9d8f, #e6765a);
+  z-index: 0;
   transform: translateX(-50%);
-  z-index: 1;
 }
 
-/* Entry Wrapper */
-.timeline-entry {
+/* === TIMELINE ROWS (ALTERNATING) === */
+.timeline-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-end;
+  margin: 80px 0;
   position: relative;
-  width: 100%;
-  margin-bottom: 4rem;
 }
 
-.timeline-entry.right {
+.timeline-row.reverse {
   flex-direction: row-reverse;
 }
 
-/* Hexagon Year Marker */
-.timeline-hex {
-  width: 70px;
-  height: 60px;
-  background-color: #00bcd4;
+/* === TIMELINE COLUMNS === */
+.timeline-col {
+  width: 45%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-col.year {
+  justify-content: flex-end;
+}
+
+.timeline-row.reverse .timeline-col.year {
+  justify-content: flex-start;
+}
+
+.timeline-col.content {
+  justify-content: flex-start;
+  padding-left: 30px;
+}
+
+.timeline-row.reverse .timeline-col.content {
+  justify-content: flex-end;
+  padding-left: 0;
+  padding-right: 30px;
+}
+
+/* === CONTENT BOX === */
+.timeline-box {
+  background: white;
+  padding: 25px 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  border: 3px solid transparent; /* default no visible border */
+  transition: border-color 0.8s ease;
+}
+
+.timeline-box ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+
+/* === HEXAGON === */
+.hexagon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  background: transparent;
+  z-index: 1;
+  margin: 0 24px;
+}
+
+.hexagon::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
   clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 50%,
-    70% 100%, 30% 100%,
-    0% 50%
+    50% 0%, 93.3% 25%, 93.3% 75%,
+    50% 100%, 6.7% 75%, 6.7% 25%
   );
+  z-index: 1;
+}
+
+.hexagon::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  background: white;
+  clip-path: polygon(
+    50% 0%, 93.3% 25%, 93.3% 75%,
+    50% 100%, 6.7% 75%, 6.7% 25%
+  );
+  z-index: 2;
+}
+
+.hexagon span {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-weight: bold;
+  font-size: 1rem;
+  color: currentColor;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 0.85rem;
-  z-index: 2;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 
-.timeline-entry.left .timeline-hex {
+
+/* === CONNECTOR: o-------O--------o === */
+.connector {
   position: absolute;
-  right: calc(50% + 50px); /* move it left of the center line */
-  transform: translateX(0); /* remove previous centering */
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
 }
 
-.timeline-entry.right .timeline-hex {
+.line-dot {
+  width: 4%; /* Or any percentage */
+  min-width: 10px; /* To keep it visible on small containers */
+  height: 2px;
+  background-color: currentColor;
+  position: relative;
+}
+
+
+.line-dot::before {
+  content: "";
   position: absolute;
-  left: calc(50% + 50px); /* move it right of the center line */
-  transform: translateX(0);
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.line-dot.left::before {
+  left: -8px;
+}
+
+.line-dot.right::before {
+  right: -8px;
+}
+
+.center-dot {
+  width: 14px;
+  height: 14px;
+  background-color: currentColor;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+
+/* === COLOR THEMES (DYNAMICALLY APPLIED VIA step-N) === */
+.hexagon.step-1,
+.timeline-row.step-1 .center-dot,
+.timeline-row.step-1 .line-dot,
+.timeline-row.step-1 .line-dot::before {
+  color: #2a9d8f;
+}
+
+.hexagon.step-2,
+.timeline-row.step-2 .center-dot,
+.timeline-row.step-2 .line-dot,
+.timeline-row.step-2 .line-dot::before {
+  color: #e9c46a;
+}
+
+.hexagon.step-3,
+.timeline-row.step-3 .center-dot,
+.timeline-row.step-3 .line-dot,
+.timeline-row.step-3 .line-dot::before {
+  color: #f4a261;
+}
+
+.hexagon.step-4,
+.timeline-row.step-4 .center-dot,
+.timeline-row.step-4 .line-dot,
+.timeline-row.step-4 .line-dot::before {
+  color: #e76f51;
+}
+
+.hexagon.step-5,
+.timeline-row.step-5 .center-dot,
+.timeline-row.step-5 .line-dot,
+.timeline-row.step-5 .line-dot::before {
+  color: #264653;
+}
+
+/*== animation part ==*/
+.connector .center-dot,
+.line-dot.left::before,
+.line-dot.right::before {
+  transition: all 0.5s ease;
+}
+
+.timeline-row:hover .connector .center-dot {
+  margin: 0 0px; /* shrink margin from 10px to 4px */
+  transform: scale(1.5);
+}
+
+.timeline-row:hover .connector .line-dot.left::before {
+  left: -16px; /* move dot closer by 4px */
+  transform: translateY(-50%) scale(2.4);
+}
+
+.timeline-row:hover .connector .line-dot.right::before {
+  right: -16px; /* move dot closer by 4px */
+  transform: translateY(-50%) scale(2.4);
+}
+
+.timeline-row:hover .connector .line-dot {
+  width: 4.8%; /* Grow from, say, 4% to 8% */
+  min-width: 20px; /* Optional: ensure minimum width */
+}
+
+
+.timeline-row.step-1:hover .timeline-box {
+  border-color: #2a9d8f;
+}
+
+.timeline-row.step-2:hover .timeline-box {
+  border-color: #e9c46a;
+}
+
+.timeline-row.step-3:hover .timeline-box {
+  border-color: #f4a261;
+}
+
+.timeline-row.step-4:hover .timeline-box {
+  border-color: #e76f51;
+}
+
+.timeline-row.step-5:hover .timeline-box {
+  border-color: #264653;
+}
+
+.hexagon {
+  transition: transform 0.3s ease;
+}
+
+.timeline-row:hover .hexagon {
+  transform: scale(1.2);
+  margin: 0 28px;
 }
 
 
 
-/* Content Box */
-.timeline-box {
-  width: 40%;
-  background: #fff;
-  padding: 1.5rem;
-  margin: 0 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  z-index: 2;
-  text-align: left;
-}
 
 
-/* Text Styles */
-.timeline-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-authors {
-  font-style: italic;
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-
-.timeline-date {
-  font-size: 0.8rem;
-  color: #888;
-  margin-bottom: 0.75rem;
-}
-
-/* Button */
-.timeline-btn {
-  border: 1px solid #00449E;
-  padding: 0.4rem 1rem;
-  font-size: 0.8rem;
-  color: #00449E;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.timeline-btn:hover {
-  background: #00449E;
-  color: #fff;
-}
 
 
 
