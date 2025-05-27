@@ -71,16 +71,24 @@
   padding: 60px 0;
 }
 
+:root {
+  --start-color: #5c2a9d;  /* Dark green */
+  --middle-color: #3ddad2; /* Orange */
+  --end-color: #f09a1a;    /* Pinkish red */
+}
+
 .timeline-line {
   position: absolute;
   left: 50%;
   top: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(to bottom, #2a9d8f, #e6765a);
+  background: linear-gradient(to bottom, var(--start-color), var(--middle-color), var(--end-color));
   z-index: 0;
   transform: translateX(-50%);
 }
+
+
 
 /* === TIMELINE ROWS (ALTERNATING) === */
 .timeline-row {
@@ -89,6 +97,7 @@
   align-items: center;
   margin: 80px 0;
   position: relative;
+  --timeline-color: #000000;
 }
 
 .timeline-row.reverse {
@@ -125,13 +134,13 @@
 /* === CONTENT BOX === */
 .timeline-box {
   background: white;
-  padding: 25px 25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px 15px;
+  border-radius: 15px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
-  border: 3px solid transparent; /* default no visible border */
-  transition: border-color 0.8s ease;
+  border: 4px solid; /* default no visible border */
+  transition: border-color 0.8s ease, transform 0.25s ease;
 }
 
 .timeline-box ul {
@@ -149,6 +158,9 @@
   background: transparent;
   z-index: 1;
   margin: 0 24px;
+  transition: transform 0.5s ease;
+  /* Use the timeline color variable */
+  color: var(--timeline-color);
 }
 
 .hexagon::before {
@@ -214,8 +226,9 @@
   width: 4%; /* Or any percentage */
   min-width: 10px; /* To keep it visible on small containers */
   height: 2px;
-  background-color: currentColor;
+  background-color: var(--timeline-color);
   position: relative;
+  transition: all 0.3s ease;
 }
 
 
@@ -225,9 +238,10 @@
   top: 50%;
   width: 8px;
   height: 8px;
-  background-color: currentColor;
+  background-color: var(--timeline-color);
   border-radius: 50%;
   transform: translateY(-50%);
+  transition: all 0.4s ease;
 }
 
 .line-dot.left::before {
@@ -241,55 +255,15 @@
 .center-dot {
   width: 14px;
   height: 14px;
-  background-color: currentColor;
+  background-color: var(--timeline-color);
   border-radius: 50%;
   margin: 0 10px;
+  transition: all 0.2s ease;
 }
 
 
-/* === COLOR THEMES (DYNAMICALLY APPLIED VIA step-N) === */
-.hexagon.step-1,
-.timeline-row.step-1 .center-dot,
-.timeline-row.step-1 .line-dot,
-.timeline-row.step-1 .line-dot::before {
-  color: #2a9d8f;
-}
 
-.hexagon.step-2,
-.timeline-row.step-2 .center-dot,
-.timeline-row.step-2 .line-dot,
-.timeline-row.step-2 .line-dot::before {
-  color: #e9c46a;
-}
-
-.hexagon.step-3,
-.timeline-row.step-3 .center-dot,
-.timeline-row.step-3 .line-dot,
-.timeline-row.step-3 .line-dot::before {
-  color: #f4a261;
-}
-
-.hexagon.step-4,
-.timeline-row.step-4 .center-dot,
-.timeline-row.step-4 .line-dot,
-.timeline-row.step-4 .line-dot::before {
-  color: #e76f51;
-}
-
-.hexagon.step-5,
-.timeline-row.step-5 .center-dot,
-.timeline-row.step-5 .line-dot,
-.timeline-row.step-5 .line-dot::before {
-  color: #264653;
-}
-
-/*== animation part ==*/
-.connector .center-dot,
-.line-dot.left::before,
-.line-dot.right::before {
-  transition: all 0.5s ease;
-}
-
+/*== HOVER EFFECTS ==*/
 .timeline-row:hover .connector .center-dot {
   margin: 0 0px; /* shrink margin from 10px to 4px */
   transform: scale(1.5);
@@ -311,33 +285,14 @@
 }
 
 
-.timeline-row.step-1:hover .timeline-box {
-  border-color: #2a9d8f;
-}
-
-.timeline-row.step-2:hover .timeline-box {
-  border-color: #e9c46a;
-}
-
-.timeline-row.step-3:hover .timeline-box {
-  border-color: #f4a261;
-}
-
-.timeline-row.step-4:hover .timeline-box {
-  border-color: #e76f51;
-}
-
-.timeline-row.step-5:hover .timeline-box {
-  border-color: #264653;
-}
-
-.hexagon {
-  transition: transform 0.3s ease;
-}
-
 .timeline-row:hover .hexagon {
   transform: scale(1.2);
-  margin: 0 28px;
+  margin: 0 26px;
+}
+
+.timeline-row:hover .timeline-box {
+  border-color: var(--timeline-color);
+  transform: scale(1.035);
 }
 
 

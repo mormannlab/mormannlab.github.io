@@ -1,34 +1,41 @@
-<section class="timeline-container">
-  <div class="timeline-line"></div>
-  {{ $pubs := where .Site.RegularPages "Section" "publications" }}
-  {{ $grouped := $pubs.GroupByDate "2006" "desc" }}
-  {{ range $index, $yearGroup := $grouped }}
-    {{ $stepClass := printf "step-%d" (add $index 1) }}
-    <div class="timeline-row {{ if modBool $index 2 }}reverse{{ end }} {{ $stepClass }}">
-      
-      <!-- Year hexagon with connector -->
-      <div class="timeline-col year">
-        <div class="hexagon {{ $stepClass }}"><span>{{ $yearGroup.Key }}</span></div>
+<div class="timeline-wrapper">
+  <section class="timeline-container">
+    <div class="timeline-line"></div>
+    {{ $pubs := where .Site.RegularPages "Section" "publications" }}
+    {{ $grouped := $pubs.GroupByDate "2006" "desc" }}
+    {{ range $index, $yearGroup := $grouped }}
+      {{ $stepClass := printf "step-%d" (add $index 1) }}
+      <div class="timeline-row {{ if modBool $index 2 }}reverse{{ end }} {{ $stepClass }}">
+        
+        <!-- Year hexagon with connector -->
+        <div class="timeline-col year">
+          <div class="hexagon {{ $stepClass }}"><span>{{ $yearGroup.Key }}</span></div>
 
-        <!-- Connector: o-------O-------o -->
-        <div class="connector">
-          <div class="line-dot left"></div>
-          <div class="center-dot"></div>
-          <div class="line-dot right"></div>
+          <!-- Connector: o-------O-------o -->
+          <div class="connector">
+            <div class="line-dot left"></div>
+            <div class="center-dot"></div>
+            <div class="line-dot right"></div>
+          </div>
         </div>
-      </div>
 
-      <!-- Publication list -->
-      <div class="timeline-col content">
-        <div class="timeline-box">
-          <ul>
-            {{ range $paper := $yearGroup.Pages }}
-              <li>{{ $paper.Title }}</li>
-            {{ end }}
-          </ul>
+        <!-- Publication list -->
+        <div class="timeline-col content">
+          <div class="timeline-box">
+            <ul>
+              {{ range $paper := $yearGroup.Pages }}
+                <li>{{ $paper.Title }}</li>
+              {{ end }}
+            </ul>
+          </div>
         </div>
-      </div>
 
-    </div>
-  {{ end }}
-</section>
+      </div>
+    {{ end }}
+  </section>
+</div>
+
+{{ $js := resources.Get "ananke/js/timeline-gradient.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+
+
