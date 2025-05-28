@@ -22,6 +22,7 @@
         <!-- Publication list -->
         <div class="timeline-col content">
           <div class="timeline-box">
+            <p><strong>{{ len $yearGroup.Pages }}</strong> Papers.</p>
             <ul>
               {{ range $paper := $yearGroup.Pages }}
                 <li>{{ $paper.Title }}</li>

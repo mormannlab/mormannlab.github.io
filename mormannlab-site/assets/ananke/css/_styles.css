@@ -69,6 +69,8 @@
   width: 90%;
   margin: auto;
   padding: 60px 0;
+  transform: scale(0.7); /* Scale the entire timeline to 60% */
+  transform-origin: top center; /* Ensure scaling starts from the top-center */
 }
 
 :root {
