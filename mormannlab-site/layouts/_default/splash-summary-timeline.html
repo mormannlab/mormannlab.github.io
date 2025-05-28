@@ -19,24 +19,37 @@
           </div>
         </div>
 
-        <!-- Publication list -->
+        <!-- Content Box -->
         <div class="timeline-col content">
           <div class="timeline-box">
+            
+            <!-- Paper count -->
             <p><strong>{{ len $yearGroup.Pages }}</strong> Papers.</p>
-            <ul>
+            
+            <!-- Hidden list only for JS to extract dates -->
+            <ul style="display: none;">
               {{ range $paper := $yearGroup.Pages }}
-                <li>{{ $paper.Title }}</li>
+                <li data-date="{{ $paper.Date }}"></li>
               {{ end }}
             </ul>
+            
+            <!-- Calendar Heatmap (per year) -->
+            <div class="calendar-heatmap" id="calendar-heatmap-{{ $yearGroup.Key }}">
+              <div class="months-row" id="months-{{ $yearGroup.Key }}"></div>
+              <div class="days-grid" id="days-{{ $yearGroup.Key }}"></div>
+            </div>
+
           </div>
         </div>
-
       </div>
     {{ end }}
   </section>
 </div>
 
-{{ $js := resources.Get "ananke/js/timeline-gradient.js" | resources.Minify | resources.Fingerprint }}
+
+{{ $js := resources.Get "ananke/js/timeline-dynamic-gradient-entries.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $js.RelPermalink }}" defer></script>
 
+{{ $js := resources.Get "ananke/js/timeline-heatmap.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
 

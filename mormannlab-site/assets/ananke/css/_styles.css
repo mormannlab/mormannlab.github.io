@@ -151,6 +151,64 @@
   margin: 0;
 }
 
+/* === GITHUB-STYLE YEAR HEATMAP === */
+.calendar-heatmap {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns, 4 rows */
+  gap: 2rem;
+}
+
+
+.calendar-month {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.calendar-month-name {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 20px);
+  grid-auto-rows: 20px;
+  gap: 3px;
+}
+
+.calendar-day {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #333;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-day[data-count="1"] { background-color: #c6e48b; }
+.calendar-day[data-count="2"] { background-color: #7bc96f; }
+.calendar-day[data-count="3"] { background-color: #239a3b; }
+.calendar-day[data-count="4"] { background-color: #196127; color: #fff; }
+
+.calendar-day.inactive {
+  background-color: #f9f9f9;
+  color: transparent;
+  pointer-events: none;
+}
+
+
+
+
 
 /* === HEXAGON === */
 .hexagon {
