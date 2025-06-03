@@ -1,7 +1,11 @@
 {{ define "main" }}
-  <article class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
-      {{ .Content }}
-    </article>
+
+  <!-- Main intro content -->
+  <article class="cf ph3 ph4-ns pv3 pv4-ns f6 f5-ns tc center measure lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
+    {{ .Content }}
+  </article>
+
+
     {{/* Define a section to pull recent posts from. For Hugo 0.20 this will default to the section with the most number of pages. */}}
     {{ $mainSections := .Site.Params.mainSections | default (slice "post") }}
     
@@ -51,29 +55,28 @@
 */}}
 
 
+  {{/* All publications */}}
+  {{ $publications := where .Site.RegularPages "Section" "publications" }}
+  {{ $pub_count := len $publications }}
 
+  {{ if ge $pub_count 1 }}
+    <div class="pa3 pa4-ns w-100 w-70-ns center">
 
-{{/* Get all publications */}}
-{{ $publications := where .Site.RegularPages "Section" "publications" }}
-{{ $pub_count := len $publications }}
+      <!-- Timeline Heading -->
+      <h1 class="tc f5 f3-ns fw6 dark-gray mb3 mt3">Timeline</h1>
 
-{{ if ge $pub_count 1 }}
-  <div class="pa3 pa4-ns w-100 w-70-ns center">
+      <!-- Timeline Layout (rendered only once) -->
+      {{ .Render "splash-summary-timeline"}}
 
-    <!-- Timeline Heading -->
-    <h1 class="flex-none tc f3 f2-ns fw6 dark-gray mb2">Timeline</h1>
-
-    <!-- Timeline Layout (rendered only once) -->
-    {{ .Render "splash-summary-timeline"}}
-
-    <!-- All Publications Button -->
-    {{ with $.Site.GetPage "section" "publications" }}
-    <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim center tc" style="width: fit-content;">
+      <!-- All Publications Button -->
+      {{ with $.Site.GetPage "section" "publications" }}
+        <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim center tc" style="width: fit-content; max-width: 90%;">
           {{ i18n "allTitle" . }}
-    </a>
-    {{ end }}
-  </div>
-{{ end }}
+        </a>
+      {{ end }}
 
-{{end}}
+    </div>
+  {{ end }}
+
+{{ end }}
     

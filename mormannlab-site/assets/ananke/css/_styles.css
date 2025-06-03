@@ -73,6 +73,16 @@
   transform-origin: center; /* Ensure scaling starts from the center */
 }
 
+@media (max-width: 768px) {
+  .timeline-container {
+    width: 100%;
+    padding: 0px 0 0px 0;
+    transform: scale(0.72);
+    transform-origin: center;
+  }
+}
+
+
 :root {
   --start-color: #5c2a9d;  /* Dark green */
   --middle-color: #3ddad2; /* Orange */
@@ -347,14 +357,6 @@
 
 
 
-
-
-
-
-
-
-
-
 /* Custom styles for site featured image (Background Image) */
 
 .cover.bg-top {
@@ -365,7 +367,6 @@
     height: 60vh; /* Ensures it takes up the full viewport height */
     animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in */
 }
-
 
 
 
@@ -400,6 +401,16 @@
     text-align: left;
 }
 
+/* ✅ Responsive text sizing for small screens */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1rem;     /* smaller on phones */
+  }
+
+  .header-description {
+    font-size: 0.75rem;    /* slightly smaller description */
+  }
+}
 
 
 
