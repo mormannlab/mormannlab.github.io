@@ -5,21 +5,20 @@
 {{ define "main" }}
   <article class="flex-l flex-wrap justify-between mw8 center ph3">
     <header class="mt4 w-100">
-      <h1 class="f1 athelas mt3 mb1"></h1>
+      <h1 class="f1 athelas mt3 mb1">{{ .Title }}</h1>
     </header>
     
     <div class="flex-l flex-wrap justify-center w-100">
       <!-- Circle Image -->
-      <div class="w-40-l w-100 mb4">
-        <div class="w5 h5 br-100 ba b--light-gray">
-          <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 br-100" />
-        </div>
+      <div class="w5 w4-m w-100 h5 h4-m h-auto center br-100 ba b--light-gray mb4">
+        <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 br-100 object-cover" />
       </div>
-      
+
       <!-- Content Section -->
-      <div class="nested-copy-line-height lh-copy f4 nested-links {{ $.Param "text_color" | default "mid-gray" }} w-60-l w-100">
+      <div class="nested-copy-line-height lh-copy f4 f5-ns nested-links {{ $.Param "text_color" | default "mid-gray" }} w-60-l w-100">
         {{ .Content }}
       </div>
     </div>
   </article>
 {{ end }}
+

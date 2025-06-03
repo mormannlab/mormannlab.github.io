@@ -13,14 +13,14 @@
     </h1>
 
     <!-- Flex Container for Image and Text -->
-    <div class="flex items-center mt3">
+    <div class="flex flex-column flex-row-ns items-center mt3">
         <!-- Circle Image -->
-        <div class="w-20 h-20 br-100 overflow-hidden mr4">
+        <div class="w-30 w-20-ns h4 h3-ns br-100 overflow-hidden mr0 mr4-ns mb3 mb0-ns">
             <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 object-cover">
         </div>
 
         <!-- Description Text -->
-        <div class="nested-links f5 lh-copy nested-copy-line-height">
+        <div class="nested-links f5 lh-copy nested-copy-line-height tc tl-ns">
             {{ .Summary }}
         </div>
     </div>

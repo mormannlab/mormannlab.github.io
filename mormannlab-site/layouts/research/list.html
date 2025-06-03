@@ -4,24 +4,24 @@
     {{ .Content }}
   </section>
 
-  <!-- Flexbox Container for Rows, Centered -->
-  <aside class="flex flex-column justify-center items-center mt5">
+  <!-- Responsive Flex Container for Research Entries -->
+  <aside class="flex flex-column justify-center items-center mt4 ph3">
     {{ $sortedPages := .Paginator.Pages.ByParam "priority" }}
     {{ range $sortedPages }}
-      <!-- Each Row -->
-      <div class="relative w-100 w-50-l mb4 bg-white br4 shadow-2 pa4 research-box" style="max-width: 90%; margin: 10px auto; display: flex; align-items: stretch;">
+      <div class="relative w-100 mb4 bg-white br4 shadow-2 pa3 pa4-ns research-box flex flex-column flex-row-ns items-stretch" style="max-width: 768px; margin: 1rem auto;">
 
-        <!-- Left Section (1/3 width) -->
-        <div style="flex: 1; display: flex; justify-content: center; align-items: center; padding: 1rem; border-right: 1px solid #ccc;">
-          <div class="w5 h5 br-100 ba b--light-gray">
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 br-100" />
+        
+        <!-- Left Section (Circular Image) -->
+        <div class="w-100 w-40-ns flex justify-center items-center pb3 pb0-ns pr0 pr3-ns">
+          <div class="w4 w5-ns h4 h5-ns br-100 ba b--light-gray">
+            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 br-100 object-cover" />
           </div>
         </div>
 
-        <!-- Right Section (2/3 width) -->
-        <div style="flex: 2; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
+        <!-- Right Section (Text) -->
+        <div class="w-100 w-60-ns flex flex-column justify-center">
           <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
-          <p class="f6 f5-ns lh-copy">{{ .Params.description }}</p>
+          <p class="f7 f5-ns lh-copy">{{ .Params.description }}</p>
         </div>
       </div>
     {{ end }}
