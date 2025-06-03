@@ -397,7 +397,7 @@
 .header-title {
     font-size: 2rem;
     font-weight: 400;
-    color: #e0e0e0;
+    color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.5;
     text-align: left;
@@ -406,7 +406,7 @@
 .header-description {
     font-size: 1rem;
     font-weight: 300;
-    color: #d1d1d1;
+    color: #ffffff;
     margin-top: 1rem;
     text-align: left;
 }
