@@ -368,6 +368,16 @@
     animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in */
 }
 
+/* ✅ Responsive image sizing for small screens */
+@media (max-width: 768px) {
+  .cover.bg-top {
+    height: 35vh; /* ⬅️ shrink height for phones */
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+
 
 
 
@@ -429,16 +439,33 @@
     transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-/* Hover Effect for Navigation Bar Text */
-.navbar-gradient a:hover {
-    color: #007BFF; /* Blue text color on hover */
+/* === Nav toggle mobile styles === */
+@media (max-width: 768px) {
+  .nav-links {
+    width: 100%;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-toggle {
+    display: block !important;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    position: absolute;
+  }
 }
 
 
 
-
-
-
+/* Hover Effect for Navigation Bar Text */
+.navbar-gradient a:hover {
+    color: #007BFF; /* Blue text color on hover */
+}
 
 
 /* Custom styles for Logo on Navigation bar */
@@ -465,6 +492,9 @@
         height: 50px;
     }
 }
+
+
+
 
 
 
