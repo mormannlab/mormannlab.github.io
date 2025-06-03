@@ -56,23 +56,19 @@
   <div class="pa3 pa4-ns w-100 w-70-ns center">
 
     <!-- Timeline Heading -->
-    <h1 class="flex-none tc f3 f2-ns fw6 dark-gray mb4">Timeline</h1>
+    <h1 class="flex-none tc f3 f2-ns fw6 dark-gray mb2">Timeline</h1>
 
     <!-- Timeline Layout (rendered only once) -->
     {{ .Render "splash-summary-timeline"}}
 
     <!-- All Publications Button -->
-    <section class="w-100 tc mt4">
-      {{ with $.Site.GetPage "section" "publications" }}
-        <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim w4 tc">
+    {{ with $.Site.GetPage "section" "publications" }}
+    <a href="{{ .RelPermalink }}" class="link db f6 pa2 br3 bg-mid-gray white dim center tc" style="width: fit-content;">
           {{ i18n "allTitle" . }}
-        </a>
-      {{ end }}
-    </section>
-
+    </a>
+    {{ end }}
   </div>
 {{ end }}
-
 
 {{end}}
     

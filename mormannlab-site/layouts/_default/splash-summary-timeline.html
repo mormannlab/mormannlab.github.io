@@ -26,18 +26,15 @@
             <!-- Paper count -->
             <p><strong>{{ len $yearGroup.Pages }}</strong> Papers.</p>
             
-            <!-- Hidden list only for JS to extract dates -->
+            <!-- Monthly bar chart -->
+            <div class="year-barchart" id="barchart-{{ $yearGroup.Key }}"></div>
+
+            <!-- Hidden data for JS -->
             <ul style="display: none;">
               {{ range $paper := $yearGroup.Pages }}
                 <li data-date="{{ $paper.Date }}"></li>
               {{ end }}
             </ul>
-            
-            <!-- Calendar Heatmap (per year) -->
-            <div class="calendar-heatmap" id="calendar-heatmap-{{ $yearGroup.Key }}">
-              <div class="months-row" id="months-{{ $yearGroup.Key }}"></div>
-              <div class="days-grid" id="days-{{ $yearGroup.Key }}"></div>
-            </div>
 
           </div>
         </div>
@@ -50,6 +47,6 @@
 {{ $js := resources.Get "ananke/js/timeline-dynamic-gradient-entries.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $js.RelPermalink }}" defer></script>
 
-{{ $js := resources.Get "ananke/js/timeline-heatmap.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $js.RelPermalink }}" defer></script>
+{{ $barchartJS := resources.Get "ananke/js/timeline-barchart.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $barchartJS.RelPermalink }}" defer></script>
 

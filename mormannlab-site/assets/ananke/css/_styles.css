@@ -68,9 +68,9 @@
   position: relative;
   width: 90%;
   margin: auto;
-  padding: 60px 0;
-  transform: scale(0.7); /* Scale the entire timeline to 60% */
-  transform-origin: top center; /* Ensure scaling starts from the top-center */
+  padding: 10px 0 10px 0;
+  transform: scale(0.7); /* Scale the entire timeline to 70% */
+  transform-origin: center; /* Ensure scaling starts from the center */
 }
 
 :root {
@@ -82,9 +82,9 @@
 .timeline-line {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: -100px;
   width: 4px;
-  height: 100%;
+  height: calc(120% + 40px);
   background: linear-gradient(to bottom, var(--start-color), var(--middle-color), var(--end-color));
   z-index: 0;
   transform: translateX(-50%);
@@ -97,7 +97,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 80px 0;
+  margin: 20px 0;
   position: relative;
   --timeline-color: #000000;
 }
@@ -141,7 +141,7 @@
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 500px;
-  border: 4px solid; /* default no visible border */
+  border: 4px solid; 
   transition: border-color 0.8s ease, transform 0.25s ease;
 }
 
@@ -151,62 +151,37 @@
   margin: 0;
 }
 
-/* === GITHUB-STYLE YEAR HEATMAP === */
-.calendar-heatmap {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns, 4 rows */
-  gap: 2rem;
-}
-
-
-.calendar-month {
+/* === YEARLY BAR CHARTS === */
+.year-barchart {
+  margin-top: 10px;
   width: 100%;
+  max-width: 100%;
+  height: 80px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-.calendar-month-name {
-  font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 4px;
-  text-transform: uppercase;
-  color: #666;
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 20px);
-  grid-auto-rows: 20px;
+  align-items: flex-end;
   gap: 3px;
+  border-bottom: 3px solid #aaa;  /* ← baseline at bottom */
+  padding-bottom: 0px;             /* spacing between line and bars */
+  transition: border-bottom 0.5s ease;
 }
 
-.calendar-day {
-  width: 20px;
-  height: 20px;
-  border-radius: 3px;
-  font-size: 10px;
-  color: #333;
-  background-color: #eee;
+.barchart-bar {
+  flex: 1;
+  height: 0;
+  background-color: #4caf50;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  font-size: 10px;
+  color: white;
+  border-radius: 2px 2px 0 0;
+  transition: background-color 0.5s ease;
 }
 
-.calendar-day[data-count="1"] { background-color: #c6e48b; }
-.calendar-day[data-count="2"] { background-color: #7bc96f; }
-.calendar-day[data-count="3"] { background-color: #239a3b; }
-.calendar-day[data-count="4"] { background-color: #196127; color: #fff; }
-
-.calendar-day.inactive {
-  background-color: #f9f9f9;
+.barchart-bar.zero {
+  background-color: #ddd;
   color: transparent;
-  pointer-events: none;
 }
-
-
 
 
 
@@ -353,6 +328,14 @@
 .timeline-row:hover .timeline-box {
   border-color: var(--timeline-color);
   transform: scale(1.035);
+}
+
+.timeline-row:hover .barchart-bar {
+  background-color: var(--timeline-color);
+}
+
+.timeline-row:hover .year-barchart{
+  border-bottom: 3px solid var(--timeline-color);
 }
 
 
