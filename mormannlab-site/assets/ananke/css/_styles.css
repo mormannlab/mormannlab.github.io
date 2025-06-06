@@ -520,7 +520,7 @@
 
 
 /* Custom Hover Effect for Publication Page Boxes */
-/* Publication Box Styling */
+/* === PUBLICATION BOXES IN FULL VIEW ===*/
 .publication-box {
   position: relative;
   overflow: hidden;
@@ -592,6 +592,90 @@
   display: block;
   animation: typing 0.2s steps(10, end) forwards;
 }
+
+
+
+/* === PUBLICATION BOXES IN MOBILE VIEW === */
+@media (max-width: 768px) {
+  /* Make the introductory text smaller on mobile */
+  .intro-text {
+    font-size: 0.68rem; /* Smaller font size for mobile */
+  }
+
+  h2.f3 {
+    font-size: 1rem; /* Reduce the size of year headers on mobile */
+  }
+
+  /* Publication Box: Full width and stacked sections */
+  .publication-box {
+    width: 100%; /* Full width for mobile */
+    display: flex;
+    flex-direction: column; /* Stack the sections vertically */
+    align-items: stretch;
+    padding: 0.1rem;
+  }
+
+  /* Title: Adjust for mobile */
+  .publication-box .left-section h3 {
+    font-size: 0.68rem;
+    line-height: 1.4; 
+  }
+
+  /* Authors: Adjust size */
+  .publication-box .left-section p.f6 {
+    font-size: 0.48rem; 
+  }
+
+  /* Left Section: Adjust for mobile */
+  .publication-box .left-section {
+    flex: 1; /* Full width on mobile */
+    padding: 0.2rem;
+  }
+
+  /* Middle Section: Make sure it's visible */
+  .publication-box .middle-section {
+    display: none !important;
+  }
+
+  /* Right Section: Center the button */
+  .publication-box .right-section {
+    opacity: 1;
+    display: flex;
+    justify-content: center; /* Horizontally center the button */
+    align-items: center;
+    padding: 0.5rem 0.5rem;
+    width: 100%; /* Full width on mobile */
+  }
+
+  /* Abstract: Keep the original font size and adjust line height */
+  .publication-box .abstract {
+    font-size: 0.5rem;
+    line-height: 1.5;
+    display: none !important;
+    animation: none;
+  }
+
+  /* Hover interaction (disable on mobile) */
+  .publication-box:hover {
+    transform: scale(1);
+    box-shadow: 0 4px 7px var(--hover-shadow-color);
+  }
+
+  /* PDF Button: Maintain original size but center on mobile */
+  .pdf-button {
+    font-size: 0.68rem; /* Preserve original font size */
+    padding: 0.5rem 0.5rem; /* Keep original padding */
+    text-align: center; /* Center the button */
+  }
+}
+
+
+
+
+
+
+
+
 
 
 
