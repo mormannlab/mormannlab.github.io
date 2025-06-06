@@ -10,18 +10,27 @@
     {{ $publications := .Pages.GroupByDate "2006" }} <!-- Group by Year -->
     {{ range $publications }}
       <div class="w-100 mb5">
-        <!-- Year Header -->
-        <h2 class="f3 fw6 bb b--light-gray pb2 mb4">{{ .Key }}</h2>
+        <!-- Year Header with Toggle Class -->
+        <h2 class="f3 fw6 bb b--light-gray pb2 mb4 year-toggle" data-year="{{ .Key }}">
+          {{ .Key }}
+        </h2>
         
-        <!-- Render Summary for Each Publication -->
-        <div class="flex flex-column gap3">
-          {{ range .Pages }}
-            {{ .Render "summary" }}
-          {{ end }}
+        <!-- Publication List (Initially Hidden on Mobile Only) -->
+        <div class="publication-list">
+          <div class="flex flex-column gap3">
+            {{ range .Pages }}
+              {{ .Render "summary" }}
+            {{ end }}
+          </div>
         </div>
       </div>
     {{ end }}
   </aside>
 </article>
+
+<!-- Hugo's Resource Pipeline for JavaScript -->
+{{ $js := resources.Get "ananke/js/publication-year-toggle.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.RelPermalink }}" defer></script>
+
 {{ end }}
 

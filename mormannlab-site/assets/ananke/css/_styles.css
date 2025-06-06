@@ -519,8 +519,17 @@
 
 
 
+
+
+
+
+
 /* Custom Hover Effect for Publication Page Boxes */
-/* === PUBLICATION BOXES IN FULL VIEW ===*/
+/* === PUBLICATION IN FULL VIEW ===*/
+.publication-list {
+  display: block; /* Always visible on larger screens */
+}
+
 .publication-box {
   position: relative;
   overflow: hidden;
@@ -595,7 +604,7 @@
 
 
 
-/* === PUBLICATION BOXES IN MOBILE VIEW === */
+/* === PUBLICATION IN MOBILE VIEW === */
 @media (max-width: 768px) {
   /* Make the introductory text smaller on mobile */
   .intro-text {
@@ -606,6 +615,17 @@
     font-size: 1rem; /* Reduce the size of year headers on mobile */
   }
 
+  .year-toggle {
+    cursor: pointer; /* Make the year header clickable */
+    font-size: 1rem; /* Ensure the year header is readable */
+  }
+
+  /* Initially hide all publication lists in mobile */
+  .publication-list {
+    display: none; /* Hide publications by default on mobile */
+  }
+
+  
   /* Publication Box: Full width and stacked sections */
   .publication-box {
     width: 100%; /* Full width for mobile */
@@ -668,6 +688,7 @@
     text-align: center; /* Center the button */
   }
 }
+
 
 
 
