@@ -618,6 +618,13 @@
   .year-toggle {
     cursor: pointer; /* Make the year header clickable */
     font-size: 1rem; /* Ensure the year header is readable */
+    padding: 5px 0px; /* Slight padding for readability */
+    margin: 2px 0; /* Reduced margin between year and list */
+    background-color: #f4f4f4; /* Add a subtle background for the year header */
+    border-radius: 3px; /* Round corners for better look */
+    display: flex; 
+    justify-content: space-between; /* Space between year and any icon or action */
+    align-items: center; /* Vertically center the content */
   }
 
   /* Initially hide all publication lists in mobile */
