@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article class="pa3 pa4-ns nested-copy-line-height">
-  <section class="cf pv3 pv4-l f4 tj lh-copy" style="max-width: 80%; margin: 0 auto; text-align: center;">
+  <section class="lab-member-intro cf pv3 pv4-l f4 tj lh-copy" style="max-width: 80%; margin: 0 auto; text-align: center;">
     {{ .Content }}
   </section>
 
@@ -23,7 +23,7 @@
         <div class="middle-section" style="flex: 3; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
           <h3 class="f4 fw6 near-black mb2">{{ .Title }}</h3>
           <p class="f5 i dark-gray mb3">{{ .Params.role }}</p>
-          <p class="f6 lh-copy">{{ .Params.description }}</p>
+          <p class="f6 lh-copy profile-description">{{ .Params.description }}</p>
         </div>
 
         <!-- Right Section -->
@@ -73,9 +73,9 @@
 
           <!-- Middle Section -->
           <div class="middle-section" style="flex: 3; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-            <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
-            <p class="f6 i mid-gray mb3">{{ .Params.role }}</p>
-            <p class="f6 lh-copy">{{ .Params.description }}</p>
+            <h3 class="f4 fw6 near-black mb2">{{ .Title }}</h3>
+            <p class="f5 i dark-gray mb3">{{ .Params.role }}</p>
+            <p class="f6 lh-copy profile-description">{{ .Params.description }}</p>
           </div>
 
           <!-- Right Section -->
@@ -123,9 +123,9 @@
 
           <!-- Middle Section -->
           <div class="middle-section" style="flex: 3; padding: 1rem 1.5rem; display: flex; flex-direction: column; justify-content: center;">
-            <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
-            <p class="f6 i mid-gray mb3">{{ .Params.role }}</p>
-            <p class="f6 lh-copy">{{ .Params.description }}</p>
+            <h3 class="f4 fw6 near-black mb2">{{ .Title }}</h3>
+            <p class="f5 i dark-gray mb3">{{ .Params.role }}</p>
+            <p class="f6 lh-copy profile-description">{{ .Params.description }}</p>
           </div>
 
           <!-- Right Section -->
@@ -211,3 +211,6 @@
     
 </article>
 {{ end }}
+
+
+

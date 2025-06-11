@@ -62,7 +62,193 @@
 
 
 
-/*Custom style for Splash summary timeline*/
+
+
+
+/*####################### COMMON NAVIGATION PANNEL #######################*/
+
+/* Custom styles for Navigation bar */
+.navbar-gradient {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.7));
+    padding: 1rem 2rem; /* Adjust padding as needed */
+    position: relative;
+    z-index: 1000;
+}
+/* Default Text Styling for Navigation Bar */
+.navbar-gradient a {
+    color: white; /* Default text color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* === Nav toggle mobile styles === */
+@media (max-width: 768px) {
+  .nav-links {
+    width: 100%;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-toggle {
+    display: block !important;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    position: absolute;
+  }
+}
+
+/* Hover Effect for Navigation Bar Text */
+.navbar-gradient a:hover {
+    color: #007BFF; /* Blue text color on hover */
+}
+
+/* Custom styles for Logo on Navigation bar */
+/* Default Logo Styling */
+.logo {
+    display: inline-block;
+    width: 200px; /* Adjust width as needed */
+    height: 70px; /* Adjust height as needed */
+    background-image: url('/images/logo/logo_gray.png'); /* Default logo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Hover Logo Styling */
+.logo:hover {
+    background-image: url('/images/logo/logo_color.png'); /* Colored version logo */
+}
+
+/* Responsive Logo Styling */
+@media (max-width: 768px) {
+    .logo {
+        width: 150px; /* Smaller logo for smaller screens */
+        height: 50px;
+    }
+}
+
+
+
+
+/* Custom styles for site featured image (Background Image) */
+.cover.bg-top {
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-color: black;
+    background-position: center; /* Centers the image vertically and horizontally */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 60vh; /* Ensures it takes up the full viewport height */
+    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+/* ✅ Responsive image sizing for small screens */
+@media (max-width: 768px) {
+  .cover.bg-top {
+    height: 35vh; /* ⬅️ shrink height for phones */
+    background-size: cover;
+    background-position: center top;
+  }
+}
+
+
+
+/* Custom styles for header text banner */
+/* Header Text Container Styling */
+.header-text-container {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.09));
+    padding: 1rem;
+    margin-top: 0rem;
+}
+
+/* Header Text Content Styling */
+.header-text-content {
+    padding: 0 1.5rem;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.header-description {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #ffffff;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+/* ✅ Responsive text sizing for small screens */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1rem;     /* smaller on phones */
+  }
+
+  .header-description {
+    font-size: 0.65rem;    /* slightly smaller description */
+  }
+}
+
+
+
+
+/* Back-to-Top Button Styling */
+.back-to-top {
+  position: fixed;
+  bottom: 90px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007BFF; /* Button background color */
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: bold;
+  z-index: 1000; /* Ensure it stays on top */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.1); /* Slightly larger on hover */
+}
+
+.back-to-top.show {
+  display: flex; /* Show the button */
+  opacity: 1; /* Ensure it is visible */
+}
+
+.back-to-top.hide {
+  opacity: 0; /* Fades out */
+  pointer-events: none; /* Disable interaction */
+}
+
+
+
+
+
+
+
+
+
+
+
+/*############################ SPLASH PAGE ###########################*/
+
 /* === TIMELINE CONTAINER === */
 .timeline-container {
   position: relative;
@@ -82,7 +268,6 @@
   }
 }
 
-
 :root {
   --start-color: #5c2a9d;  /* Dark green */
   --middle-color: #3ddad2; /* Orange */
@@ -99,8 +284,6 @@
   z-index: 0;
   transform: translateX(-50%);
 }
-
-
 
 /* === TIMELINE ROWS (ALTERNATING) === */
 .timeline-row {
@@ -193,8 +376,6 @@
   color: transparent;
 }
 
-
-
 /* === HEXAGON === */
 .hexagon {
   position: relative;
@@ -251,8 +432,6 @@
   justify-content: center;
 }
 
-
-
 /* === CONNECTOR: o-------O--------o === */
 .connector {
   position: absolute;
@@ -275,7 +454,6 @@
   position: relative;
   transition: all 0.3s ease;
 }
-
 
 .line-dot::before {
   content: "";
@@ -306,8 +484,6 @@
   transition: all 0.2s ease;
 }
 
-
-
 /*== HOVER EFFECTS ==*/
 .timeline-row:hover .connector .center-dot {
   margin: 0 0px; /* shrink margin from 10px to 4px */
@@ -328,7 +504,6 @@
   width: 4.8%; /* Grow from, say, 4% to 8% */
   min-width: 20px; /* Optional: ensure minimum width */
 }
-
 
 .timeline-row:hover .hexagon {
   transform: scale(1.2);
@@ -357,152 +532,8 @@
 
 
 
-/* Custom styles for site featured image (Background Image) */
 
-.cover.bg-top {
-    background-size: cover; /* Ensures the image covers the entire area */
-    background-color: black;
-    background-position: center; /* Centers the image vertically and horizontally */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    height: 60vh; /* Ensures it takes up the full viewport height */
-    animation: fadeIn 0.5s ease-in-out; /* Smooth fade-in */
-}
-
-/* ✅ Responsive image sizing for small screens */
-@media (max-width: 768px) {
-  .cover.bg-top {
-    height: 35vh; /* ⬅️ shrink height for phones */
-    background-size: cover;
-    background-position: center top;
-  }
-}
-
-
-
-
-
-/* Custom styles for header text banner */
-/* Header Text Container Styling */
-.header-text-container {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.09));
-    padding: 1rem;
-    margin-top: 0rem;
-}
-
-/* Header Text Content Styling */
-.header-text-content {
-    padding: 0 1.5rem;
-}
-
-.header-title {
-    font-size: 2rem;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-    text-align: left;
-}
-
-.header-description {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #ffffff;
-    margin-top: 1rem;
-    text-align: left;
-}
-
-/* ✅ Responsive text sizing for small screens */
-@media (max-width: 768px) {
-  .header-title {
-    font-size: 1rem;     /* smaller on phones */
-  }
-
-  .header-description {
-    font-size: 0.75rem;    /* slightly smaller description */
-  }
-}
-
-
-
-
-/* Custom styles for Navigation bar */
-.navbar-gradient {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.7));
-    padding: 1rem 2rem; /* Adjust padding as needed */
-    position: relative;
-    z-index: 1000;
-}
-/* Default Text Styling for Navigation Bar */
-.navbar-gradient a {
-    color: white; /* Default text color */
-    text-decoration: none;
-    transition: color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-/* === Nav toggle mobile styles === */
-@media (max-width: 768px) {
-  .nav-links {
-    width: 100%;
-  }
-
-  .nav-links ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .nav-toggle {
-    display: block !important;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
-    position: absolute;
-  }
-}
-
-
-
-/* Hover Effect for Navigation Bar Text */
-.navbar-gradient a:hover {
-    color: #007BFF; /* Blue text color on hover */
-}
-
-
-/* Custom styles for Logo on Navigation bar */
-/* Default Logo Styling */
-.logo {
-    display: inline-block;
-    width: 200px; /* Adjust width as needed */
-    height: 70px; /* Adjust height as needed */
-    background-image: url('/images/logo/logo_gray.png'); /* Default logo */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-/* Hover Logo Styling */
-.logo:hover {
-    background-image: url('/images/logo/logo_color.png'); /* Colored version logo */
-}
-
-/* Responsive Logo Styling */
-@media (max-width: 768px) {
-    .logo {
-        width: 150px; /* Smaller logo for smaller screens */
-        height: 50px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
+/*############################ RESEARCH PAGE ###########################*/
 
 
 /* Custom styles for magnifying effect on hover over the Research page boxes */
@@ -515,6 +546,12 @@
   box-shadow: 0 8px 20px var(--hover-shadow-color);
 }
 
+@media (max-width: 768px) {
+  .research-intro {
+    margin-top: 35px;
+    font-size: 0.9rem; /* Smaller font size for mobile */
+  }
+}
 
 
 
@@ -524,7 +561,10 @@
 
 
 
-/* Custom Hover Effect for Publication Page Boxes */
+
+
+/*############################ PUBLICATIONS PAGE ###########################*/
+
 /* === PUBLICATION IN FULL VIEW ===*/
 .publication-list {
   display: block; /* Always visible on larger screens */
@@ -611,7 +651,7 @@
 /* === PUBLICATION IN MOBILE VIEW === */
 @media (max-width: 768px) {
   /* Make the introductory text smaller on mobile */
-  .intro-text {
+  .publication-intro {
     font-size: 0.68rem; /* Smaller font size for mobile */
   }
 
@@ -710,11 +750,8 @@
 
 
 
+/*############################ OUR TEAM PAGE ###########################*/
 
-
-
-
-/* Custom Hover Effect for Our Team Page Boxes */
 /* Profile Card General Styling */
 .profile-card {
   position: relative;
@@ -752,44 +789,100 @@
   flex: 2;
 }
 
+/* === MOBILE VIEW === */
+@media (max-width: 768px) {
+  /* Target the lab-content-section class */
+  .lab-member-intro {
+    font-size: 0.85rem; /* Reduce font size for the entire content inside the section */
+  }
 
+  /* Target specific elements inside the section */
+  .lab-member-intro h2 {
+    font-size: 0.95rem; /* Reduce font size for headings inside the section */
+  }
 
+  .lab-member-intro p {
+    font-size: 0.95rem; /* Reduce font size for paragraphs inside the section */
+  }
 
+  /* Adjust the profile card width and layout for mobile */
+  .profile-card {
+    width: 100%; /* Cards take up more width on mobile */
+    flex-direction: column; /* Stack left, middle, and right sections vertically */
+    margin: 0px auto; /* Center cards with some space */
+    transform: scale(0.9) !important; /* Scale down the profile cards for mobile */
+    padding: 10px;
+  }
 
-/* Back-to-Top Button Styling */
-.back-to-top {
-  position: fixed;
-  bottom: 90px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #007BFF; /* Button background color */
-  color: white;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: none; /* Hidden by default */
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  font-weight: bold;
-  z-index: 1000; /* Ensure it stays on top */
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  /* Title - Make smaller on mobile */
+  .profile-card .middle-section h3 {
+    font-size: 0.85rem; /* Reduced font size for title on mobile */
+    margin-bottom: 0px;
+  }
+
+  /* Role - Make smaller on mobile */
+  .profile-card .middle-section p.f5 {
+    font-size: 0.8rem; /* Reduced font size for role on mobile */
+    margin-bottom: 5px;
+  }
+
+  /* Initially hide the description */
+  .profile-description {
+    margin-top: 0px;
+    margin-bottom: -20px;
+    font-size: 0.65rem;
+    text-align: left;
+    opacity: 0; /* Hide the description by default */
+    max-height: 0; /* Optional: For smoother collapse */
+    overflow: hidden; /* Prevent overflowing content */
+    transition: opacity 0.6s ease, max-height 0.6s ease; /* Smooth transition */
+  }
+
+  /* Show the description when the card is hovered or touched */
+  .profile-card:hover .profile-description,
+  .profile-card.touch-active .profile-description {
+    opacity: 1; /* Make the description visible */
+    max-height: 500px; /* Set a large enough value to allow full visibility */
+  }
+
+  /* Optional: Ensure no hover effect on mobile */
+  .profile-card:hover {
+    width: 100%;
+    box-shadow: 0 6px 8px var(--hover-shadow-color);
+  }
+
+  /* Fix the image to stay circular on mobile */
+  .profile-card .left-section .w5 {
+    width: 100px; /* Increase image size */
+    height: 100px; /* Maintain height for circular shape */
+    object-fit: cover; /* Ensure image doesn't get stretched */
+    border-radius: 50%; /* Keep the image circular */
+    margin-bottom: -20px;
+  }
+
+  .profile-card .right-section {
+    text-align: left;
+
+    /* Disable gliding effect only on mobile */
+    transform: scale(1); /* Remove sliding effect */
+    opacity: 1 !important; /* Keep right section visible without sliding */
+  }
+
+  /* Reduce the font size and space for the right section */
+  .profile-card .right-section p {
+    font-size: 0.7rem; /* Reduced font size */
+    margin-top: -5px;
+    margin-bottom: 10px; /* Reduce bottom margin */
+  }
+
+  .profile-card .right-section a {
+    font-size: 0.7rem; /* Smaller font size for links */
+  }
 }
 
-.back-to-top:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: scale(1.1); /* Slightly larger on hover */
-}
 
-.back-to-top.show {
-  display: flex; /* Show the button */
-  opacity: 1; /* Ensure it is visible */
-}
 
-.back-to-top.hide {
-  opacity: 0; /* Fades out */
-  pointer-events: none; /* Disable interaction */
-}
+
+
+
 

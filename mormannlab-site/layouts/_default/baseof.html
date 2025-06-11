@@ -75,6 +75,10 @@
     
     {{ $script := resources.Get "ananke/js/why-we-do-it.js" | fingerprint }}
     <script src="{{ $script.RelPermalink }}" defer></script>
+    
+    {{/* Add hover-touch.js for touch and hover interaction */}}
+    {{ $js := resources.Get "ananke/js/hover-touch.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $js.RelPermalink }}" defer></script>
 
   </body>
 </html>
