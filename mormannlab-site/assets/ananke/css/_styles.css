@@ -539,6 +539,14 @@
 /* Custom styles for magnifying effect on hover over the Research page boxes */
 .research-box {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex; /* Ensure a flexbox layout */
+  justify-content: space-between; /* Space out the image and text */
+  align-items: center; /* Align the items in the center */
+}
+
+.research-box .w-40-ns {
+  width: 60%; /* Scale the image down to 60% of its container on larger screens */
+  height: auto; /* Ensure the image scales correctly */
 }
 
 .research-box:hover {
@@ -546,10 +554,36 @@
   box-shadow: 0 8px 20px var(--hover-shadow-color);
 }
 
+/* Adjustments for Mobile View */
 @media (max-width: 768px) {
   .research-intro {
     margin-top: 35px;
     font-size: 0.9rem; /* Smaller font size for mobile */
+  }
+
+  /* Adjust image and container for mobile */
+  .research-box {
+    width: 100%; /* Cards take up full width on mobile */
+    flex-direction: column; /* Stack the image and text vertically */
+    margin: 10px auto; /* Center the research box */
+  }
+
+  /* Reduce padding for mobile */
+  .research-box .w-100 {
+    padding: 0;
+    margin-bottom: 10px; /* Reduce spacing between image and text */
+  }
+
+  /* Make the profile image smaller on mobile */
+  .research-box .w-40-ns {
+    width: 100%; /* Reduce image size on mobile */
+    height: auto; /* Ensure the image scales well */
+    margin-bottom: 10px; /* Space between the image and the text */
+  }
+
+  /* Make the description text font smaller on mobile */
+  .research-box .f7 {
+    font-size: 0.8rem; /* Reduce font size for smaller screens */
   }
 }
 
