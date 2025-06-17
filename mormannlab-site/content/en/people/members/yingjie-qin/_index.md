@@ -2,7 +2,7 @@
 title: "Yingjie Qin"
 description: "Yingjie studied medicine at Wuhan Tongji Medical School and Sichuan University in China and joined the lab at the end of 2021 as a PhD student. Currently she studies how  single neurons in the human medial temporal lobe (MTL) contribute to the learning and extinction of fear."
 type: "member"
-role: "PhD"
+role: "PhD Student"
 image: "/images/members/yingjie-qin.jpg"
 email: "Yingjie.Qin@ukbonn.de"
 social_media:

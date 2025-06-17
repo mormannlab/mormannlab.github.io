@@ -2,7 +2,7 @@
 title: "Katharina Karkowski"
 description: "Katharina joined the lab in 2020 as a PhD student. Her research focus is the semantic tuning of concept cells in the human MTL. She studied Computer Science at the University of Bonn."
 type: "member"
-role: "PhD" # Example: "Researcher" or "Head of Working Group"
+role: "PhD Student" # Example: "Researcher" or "Head of Working Group"
 image: "/images/members/katharina_karkowski.jpg" # Update the image path for the member
 email: "katharina.karkowski@ukbonn.de" # Update with the member's email
 phone: "+CountryCode PhoneNumber" # Update with the member's phone number

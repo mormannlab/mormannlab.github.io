@@ -2,7 +2,7 @@
 title: "Alana Darcher"
 description: "Alana joined the lab in 2020 as a PhD student. She studies how movies and other naturalistic stimuli are processed by single neurons, in collaboration with Jakob Macke's group at the University of Tuebingen. Previously, she studied Neuroscience and Philosophy at Emory University and Systemic Neurosciences at Ludwig Maximilian University of Munich."
 type: "member"
-role: "PhD"
+role: "PhD Student"
 image: "/images/members/alana-darcher.jpg"
 email: "alana.darcher@ukbonn.de"
 website: "https://alanadarcher.com"
