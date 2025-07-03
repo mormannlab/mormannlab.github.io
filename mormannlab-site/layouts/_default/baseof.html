@@ -80,5 +80,14 @@
     {{ $js := resources.Get "ananke/js/hover-touch.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.RelPermalink }}" defer></script>
 
+    <!-- Full-screen transition overlay -->
+    <div id="transition-overlay"></div>
+    {{ $transitions := resources.Get "ananke/js/transitions.js" | resources.Minify | resources.Fingerprint }}
+    <script src="{{ $transitions.RelPermalink }}" defer></script>
+
+
+
+
+
   </body>
 </html>

@@ -245,6 +245,41 @@
 
 
 
+/*######################### PAGE Transoitions ########################*/
+
+/* Full-screen black overlay with scale effect */
+#transition-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #000000;
+  opacity: 0;
+  transform: scale(0); 
+  transform-origin: center;
+  pointer-events: none;
+  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+  z-index: 9999; /* Ensure it’s on top of the content */
+}
+
+/* When page is loaded, hide the overlay */
+body.page-loaded #transition-overlay {
+  opacity: 0;
+  transform: scale(0.8); /* Reset to small */
+}
+
+/* On page transition, the overlay scales and fades */
+body.page-transition #transition-overlay {
+  opacity: 1;
+  transform: scale(1); /* Scale to cover entire screen */
+}
+
+
+
+
+
+
+
+
+
 
 
 /*############################ SPLASH PAGE ###########################*/
