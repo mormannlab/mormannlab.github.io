@@ -1,22 +1,31 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const overlay = document.getElementById('transition-overlay');
+document.addEventListener('DOMContentLoaded', function () {
+  // Add the 'page-transition' class on page load
+  document.body.classList.add('page-transition');
 
-  // Initially add page-loaded to allow content to be visible
-  document.body.classList.add('page-loaded');
+  // Select the page content (main content area)
+  const pageContent = document.querySelector('.page-content');
+  const headerTextContainer = document.querySelector('.header-text-container');
 
-  // Handle internal link navigation
-  document.querySelectorAll('a[href]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
+  // Initially, hide the content (optional if content starts with opacity: 0)
+  if (pageContent) {
+    pageContent.style.opacity = 0;  // Start with content hidden
+  }
+
+  // Once the page has loaded, trigger the fade-in and horizontal slide-in effects
+  window.addEventListener('load', function () {
+    setTimeout(() => {
+      document.body.classList.add('loaded');
       
-      // Trigger the transition effect
-      document.body.classList.remove('page-loaded');
-      document.body.classList.add('page-transition');
+      // Add the 'loaded' class to the header text container for the slide-in effect
+      if (headerTextContainer) {
+        headerTextContainer.classList.add('loaded');
+      }
 
-      // Wait for the fade and scale effect to finish before navigating
-      setTimeout(() => {
-        window.location.href = link.href;
-      }, 600); // match transition timing
-    });
+      // Fade in the page content by adjusting opacity
+      if (pageContent) {
+        pageContent.style.transition = 'opacity 1s ease';  // Ensure smooth transition
+        pageContent.style.opacity = 2;  // Make content visible
+      }
+    }, 100);  // Optional delay before applying transition
   });
 });

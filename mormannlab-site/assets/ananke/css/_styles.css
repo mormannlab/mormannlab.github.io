@@ -247,32 +247,29 @@
 
 /*######################### PAGE Transoitions ########################*/
 
-/* Full-screen black overlay with scale effect */
-#transition-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: #000000;
-  opacity: 0;
-  transform: scale(0); 
-  transform-origin: center;
-  pointer-events: none;
-  transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
-  z-index: 9999; /* Ensure it’s on top of the content */
+/* Initial state of the header text: position it off-screen */
+.header-text-container {
+  transform: translateY(-10%);  /* Start from 30px above its original position */
+  opacity: 0;  /* Make it invisible initially */
+  transition: transform 0.5s ease, opacity 0.85s ease;  /* Transition for both movement and opacity */
 }
 
-/* When page is loaded, hide the overlay */
-body.page-loaded #transition-overlay {
-  opacity: 0;
-  transform: scale(0.8); /* Reset to small */
+/* When the header is in its loaded state, bring it into view */
+.header-text-container.loaded {
+  transform: translateY(0);  /* Slide the text into its original position */
+  opacity: 1;  /* Make it visible */
 }
 
-/* On page transition, the overlay scales and fades */
-body.page-transition #transition-overlay {
-  opacity: 1;
-  transform: scale(1); /* Scale to cover entire screen */
+/* Initial state for page content */
+.page-content {
+  opacity: 0;  /* Start with invisible content */
+  transition: opacity 0.8s ease;  /* Smooth fade-in transition */
 }
 
-
+/* Optionally add transition for smoother page switching if necessary */
+.page-transition {
+  transition: opacity 1s ease;
+}
 
 
 

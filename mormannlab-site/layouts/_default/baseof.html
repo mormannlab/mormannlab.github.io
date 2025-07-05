@@ -66,7 +66,7 @@
   <body class="ma0 {{ $.Param "body_classes"  | default "avenir bg-near-white"}} {{ $environment }}">
 
     {{ block "header" . }}{{ partial "site-header.html" .}}{{ end }}
-    <main class="pb7" role="main">
+    <main class="pb7 page-content" role="main">
       {{ block "main" . }}{{ end }}
     </main>
     {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
@@ -80,13 +80,9 @@
     {{ $js := resources.Get "ananke/js/hover-touch.js" | resources.Minify | resources.Fingerprint }}
     <script src="{{ $js.RelPermalink }}" defer></script>
 
-    <!-- Full-screen transition overlay -->
-    <div id="transition-overlay"></div>
-    {{ $transitions := resources.Get "ananke/js/transitions.js" | resources.Minify | resources.Fingerprint }}
-    <script src="{{ $transitions.RelPermalink }}" defer></script>
-
-
-
+    <!-- Loading Screen Transition -->
+    {{ $transitionScript := resources.Get "ananke/js/transitions.js" | fingerprint }}
+    <script src="{{ $transitionScript.RelPermalink }}" defer></script>
 
 
   </body>
