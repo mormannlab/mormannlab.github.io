@@ -1,33 +1,32 @@
 {{ define "main" }}
 <article class="pa3 pa4-ns nested-copy-line-height">
+
+  <!-- Page Content -->
   <section class="research-intro cf ph3 ph5-l pv3 pv4-l f6 f4-ns tc center measure lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
     {{ .Content }}
   </section>
 
-  <!-- Responsive Flex Container for Research Entries -->
-  <aside class="flex flex-column justify-center items-center mt4 ph3">
-    {{ $sortedPages := .Paginator.Pages.ByParam "priority" }}
-    {{ range $sortedPages }}
-      <div class="relative w-100 mb4 bg-white br4 shadow-2 pa3 pa4-ns research-box flex flex-column flex-row-ns items-stretch" style="max-width: 768px; margin: 1rem auto;">
-
-        
-        <!-- Left Section (Circular Image) -->
-        <div class="w-80 w-40-ns flex justify-center items-center pb3 pb0-ns pr0 pr3-ns">
-          <div class="w4 w5-ns h4 h5-ns br-100 ba b--light-gray">
-            <img src="{{ .Params.image }}" alt="{{ .Title }}" class="w-100 h-100 br-100 object-cover" />
+  <!-- 3D Research Slider Section (Centered like the old layout) -->
+  <section class="flex flex-column justify-center items-center mt5 mb5 ph3">
+    <div class="slider" style="--quantity: {{ len .Paginator.Pages }}">
+      {{ range $index, $item := .Paginator.Pages.ByParam "priority" }}
+        <div class="item" style="--position: {{ add $index 1 }}">
+          <div class="research-card">
+            <div class="image-wrapper">
+              <img src="{{ $item.Params.image }}" alt="{{ $item.Title }}">
+            </div>
+            <div class="text-wrapper">
+              <h3>{{ $item.Title }}</h3>
+              <p>{{ $item.Params.description }}</p>
+            </div>
           </div>
         </div>
+      {{ end }}
+    </div>
+  </section>
 
-        <!-- Right Section (Text) -->
-        <div class="w-80 w-80-ns flex flex-column justify-center">
-          <h3 class="f5 f4-ns fw5 mb2">{{ .Title }}</h3>
-          <p class="f7 f5-ns lh-copy">{{ .Params.description }}</p>
-        </div>
-      </div>
-    {{ end }}
-  </aside>
-
+  <!-- (Optional) Pagination -->
   {{ template "_internal/pagination.html" . }}
+
 </article>
 {{ end }}
-
