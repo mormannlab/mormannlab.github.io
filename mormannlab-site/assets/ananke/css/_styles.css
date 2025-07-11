@@ -583,31 +583,27 @@
   width: 300px;
   height: 300px;
   transform-style: preserve-3d;
-  transform: perspective(10000px);
-  animation: autoRun 18s linear infinite;
-  animation-play-state: running;
+  transition: transform 0.1s ease-out;
+  cursor: grab;
 }
 
-@keyframes autoRun {
-  from {
-    transform: perspective(3000px) rotateY(0deg);
-  }
-  to {
-    transform: perspective(3000px) rotateY(360deg);
-  }
+/* Prevent selection inside the 3D slider during dragging */
+.slider.dragging,
+.slider.dragging * {
+  user-select: none !important;
 }
 
 /* Individual rotating cards */
 .item {
   position: absolute;
-  top: 15%;
+  top: 0%;
   left: 0;
   width: 300px;
   height: 400px;
   transform-style: preserve-3d;
   transform: 
     rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg)) 
-    translateZ(500px);
+    translateZ(250px);
 }
 
 /* Card layout */
@@ -641,7 +637,7 @@
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #ebb14e;
+  border: 2px solid #efbc64;
   backface-visibility: hidden;
 }
 
@@ -676,10 +672,6 @@
 
 
 /*hover effects*/
-.slider:hover {
-  animation-play-state: paused;
-}
-
 .research-card:hover{
   box-shadow: 0 6px 10px var(--hover-shadow-color);
 }
@@ -698,6 +690,7 @@
 
 .publication-box {
   position: relative;
+  border: 2px solid #efbc64;
   overflow: hidden;
   width: 70%; /* Default width */
   display: flex;
@@ -883,6 +876,7 @@
   position: relative;
   overflow: hidden;
   width: 60%; /* Initial width */
+  border: 2px solid #efbc64;
   transition: width 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
 }

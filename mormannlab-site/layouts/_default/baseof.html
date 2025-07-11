@@ -84,6 +84,9 @@
     {{ $transitionScript := resources.Get "ananke/js/transitions.js" | fingerprint }}
     <script src="{{ $transitionScript.RelPermalink }}" defer></script>
 
+    <!-- 3D-slider -->
+    {{ $sliderScript := resources.Get "ananke/js/3d-slider.js" | fingerprint }}
+    <script src="{{ $sliderScript.RelPermalink }}" defer></script>
 
   </body>
 </html>
