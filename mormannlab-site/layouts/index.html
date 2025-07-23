@@ -1,7 +1,9 @@
 {{ define "main" }}
 
   <!-- Main intro content -->
-  <article class="cf ph3 ph4-ns pv3 pv4-ns f6 f5-ns tc center measure lh-copy {{ $.Param "text_color" | default "mid-gray" }}">
+  {{ $textColor := $.Param "text_color" | default "mid-gray" }}
+  <article class="cf ph3 ph4-ns pv3 pv4-ns f6 f5-ns tc center measure lh-copy {{ $textColor }}">
+
     {{ .Content }}
   </article>
 
@@ -11,10 +13,33 @@
     
     {{/* Check to see if the section is defined for ranging through it */}}
  
- 
- 
-{{/* 
-    <!-- Why We Do It: Scroll-Reveal Quote -->
+  
+  
+  <!-- 3D Research Slider (now using content/en/home/*.md) -->
+  <section class="flex flex-column justify-center items-center mt5 mb7 ph3">
+    {{ $homePages := where site.RegularPages "Section" "research" }}
+    {{ $sortedPages := sort $homePages "Params.priority" }}
+    <div id="slider" class="slider" style='--quantity: {{ len $sortedPages }}'>
+      {{ range $index, $item := $sortedPages }}
+        <div class="item" style="--position: {{ add $index 1 }}">
+          <div class="research-card">
+            <div class="image-wrapper">
+              <img src="{{ $item.Params.image }}" alt="{{ $item.Title }}">
+            </div>
+            <div class="text-wrapper">
+              <h3>{{ $item.Title }}</h3>
+              <p>{{ $item.Params.description }}</p>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </section>
+
+
+
+<!-- 
+    Why We Do It: Scroll-Reveal Quote
     <section class="w-100 pv6 scroll-reveal-quote relative" id="why-we-do-it" style="position: relative; height: 10rem; margin-bottom: 16rem;">
       <div class="tc f3 f2-ns fw6 i mid-gray ph3 ph5-l measure center">
         <span class="quote-question">Why we do it?</span>
@@ -24,17 +49,17 @@
 
 
 
-    <!-- Mini Highlights Section -->
+    Mini Highlights Section
     <section class="w-100 pv4 bg-light-silver">
         <div class="flex flex-column flex-row-ns justify-around items-center tc f5 f4-ns fw5 mid-gray ph3 ph5-l measure-wide center">
 
-            <!-- Research Topics -->
+            Research Topics
             <div class="pa3">
                 <span role="img" aria-label="projects">🧪</span>
                 {{ len (where .Site.RegularPages "Section" "research") }} Research Topics
             </div>
 
-            <!-- Team Members -->
+            Team Members
             <div class="pa3">
                 <span role="img" aria-label="team">👩‍🔬</span>
                 {{ $membersDir := readDir "content/en/people/members" }}
@@ -44,7 +69,7 @@
                 {{ add $memberCount $externalCount }} Team Members
             </div>
 
-            <!-- Publications -->
+            Publications
             <div class="pa3">
                 <span role="img" aria-label="papers">📄</span>
                 {{ len (where .Site.RegularPages "Section" "publications") }} Publications
@@ -52,7 +77,7 @@
 
         </div>
     </section>
-*/}}
+  -->
 
 
   {{/* All publications */}}
@@ -63,7 +88,7 @@
     <div class="pa3 pa4-ns w-100 w-70-ns center">
 
       <!-- Timeline Heading -->
-      <h1 class="tc f5 f3-ns fw6 dark-gray mb3 mt3">Timeline</h1>
+      <h1 class="tc f5 f3-ns fw6 dark-gray mb2 mt5">Timeline</h1>
 
       <!-- Timeline Layout (rendered only once) -->
       {{ .Render "splash-summary-timeline"}}

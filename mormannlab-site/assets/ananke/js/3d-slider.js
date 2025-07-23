@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function autoRotate() {
     if (!isDragging && !isHovered) {
       rotation += 0.2;
-      slider.style.transform = `perspective(1500px) rotateY(${rotation}deg)`;
+      slider.style.transform = `perspective(4000px) rotateY(${rotation}deg)`;
     }
     autoRotateId = requestAnimationFrame(autoRotate);
   }
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isDragging) return;
     const delta = e.clientX - startX;
     rotation = lastRotation + delta * 0.5;
-    slider.style.transform = `perspective(1500px) rotateY(${rotation}deg)`;
+    slider.style.transform = `perspective(4000px) rotateY(${rotation}deg)`;
   });
 
   document.addEventListener("mouseup", () => {

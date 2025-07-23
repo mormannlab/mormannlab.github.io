@@ -6,6 +6,7 @@ resourceDir = "../resources"
 
 defaultContentLanguage = "en"
 sectionPagesMenu = "main"
+
 enableRobotsTXT = true
 
 
