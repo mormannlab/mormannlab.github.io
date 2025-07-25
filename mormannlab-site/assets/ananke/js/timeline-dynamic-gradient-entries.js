@@ -10,9 +10,9 @@ function updateTimelineColors() {
   const middleColor = rootStyles.getPropertyValue('--middle-color').trim();
   const endColor = rootStyles.getPropertyValue('--end-color').trim();
 
-  console.log('Start Color:', startColor);  // Log start color
-  console.log('Middle Color:', middleColor);  // Log middle color
-  console.log('End Color:', endColor);      // Log end color
+  //console.log('Start Color:', startColor);  // Log start color
+  //console.log('Middle Color:', middleColor);  // Log middle color
+  //console.log('End Color:', endColor);      // Log end color
 
   // Create a hidden canvas to sample gradient color
   const canvas = document.createElement('canvas');

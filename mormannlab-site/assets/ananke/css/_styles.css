@@ -331,6 +331,12 @@
     translateZ(250px);
 }
 
+/* Prevent scrolling while slider is active */
+body.no-scroll {
+  overflow: hidden;
+}
+
+
 /* Card layout */
 .research-card {
   position: center;
