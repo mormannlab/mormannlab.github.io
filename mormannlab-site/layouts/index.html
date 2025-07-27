@@ -13,10 +13,15 @@
     
     {{/* Check to see if the section is defined for ranging through it */}}
  
-  
+  <!-- Content from research -->
+  {{ with site.GetPage "section" "research" }}
+    <section class="research-intro cf ph3 ph5-l pt4 pt5-l pb3 pb4-l f6 f4-ns tc center measure lh-copy {{ $textColor }}">
+      {{ .Content }}
+    </section>
+  {{ end }}
   
   <!-- 3D Research Slider (now using content/en/home/*.md) -->
-  <section class="flex flex-column justify-center items-center mt6 mb6 ph3">
+  <section class="flex flex-column justify-center items-center mt2 mt4-ns mb6 ph3">
     {{ $homePages := where site.RegularPages "Section" "research" }}
     {{ $sortedPages := sort $homePages "Params.priority" }}
     <div id="slider" class="slider" style='--quantity: {{ len $sortedPages }}'>
