@@ -16,7 +16,7 @@
   
   
   <!-- 3D Research Slider (now using content/en/home/*.md) -->
-  <section class="flex flex-column justify-center items-center mt5 mb7 ph3">
+  <section class="flex flex-column justify-center items-center mt6 mb6 ph3">
     {{ $homePages := where site.RegularPages "Section" "research" }}
     {{ $sortedPages := sort $homePages "Params.priority" }}
     <div id="slider" class="slider" style='--quantity: {{ len $sortedPages }}'>
@@ -88,7 +88,7 @@
     <div class="pa3 pa4-ns w-100 w-70-ns center">
 
       <!-- Timeline Heading -->
-      <h1 class="tc f5 f3-ns fw6 dark-gray mb2 mt5">Timeline</h1>
+      <h1 class="tc f5 f3-ns fw6 dark-gray mb2 mt4">Timeline</h1>
 
       <!-- Timeline Layout (rendered only once) -->
       {{ .Render "splash-summary-timeline"}}
