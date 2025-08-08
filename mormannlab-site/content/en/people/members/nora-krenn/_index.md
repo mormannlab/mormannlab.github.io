@@ -1,6 +1,6 @@
 ---
 title: "Nora Krenn"
-description:  "Nora joined the lab in 2019 as a PhD student. She investigates human single-neuron activity during the detection of unexpected concepts. In addition, she examines single-neuron correlates of conscious perception during peripheral vision. She studied at the University of Vienna and has a background in neuroscience."
+description:  "Nora investigates single-neuron activity in humans, including the responses of concept neurons. Her work focuses on dynamics related to prediction. Additionally, her research explores single-neuron correlates of conscious perception during peripheral visual processing."
 type: "member"
 role: "PhD Student"
 image: "/images/members/nora-krenn.jpg" # Update the image path for the member
