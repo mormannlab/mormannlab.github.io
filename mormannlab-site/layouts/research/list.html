@@ -6,8 +6,8 @@
     {{ .Content }}
   </section>
 
-  <!-- 3D Research Slider Section (Centered like the old layout) -->
-  <section class="flex flex-column justify-center items-center mt5 mb5 ph3">
+  <!-- 3D Research Slider Section -->
+  <section class="flex flex-column justify-center items-center mt5 mb6 ph3">
     <div id="slider" class="slider" style="--quantity: {{ len .Paginator.Pages }}">
       {{ range $index, $item := .Paginator.Pages.ByParam "priority" }}
         <div class="item" style="--position: {{ add $index 1 }}">

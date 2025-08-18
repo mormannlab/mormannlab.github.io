@@ -15,7 +15,7 @@
  
   <!-- Content from research -->
   {{ with site.GetPage "section" "research" }}
-    <section class="research-intro cf ph3 ph5-l pt4 pt5-l pb3 pb4-l f6 f4-ns tc center measure lh-copy {{ $textColor }}">
+    <section class="research-intro cf ph4 ph6-l pt4 pt5-l pb3 pb4-l f6 f3-ns tc center measure lh-copy {{ $textColor }}">
       {{ .Content }}
     </section>
   {{ end }}
@@ -90,10 +90,10 @@
   {{ $pub_count := len $publications }}
 
   {{ if ge $pub_count 1 }}
-    <div class="pa3 pa4-ns w-100 w-70-ns center">
+    <div class="pa3 pa6-ns w-100 w-70-ns center">
 
       <!-- Timeline Heading -->
-      <h1 class="tc f5 f3-ns fw6 dark-gray mb2 mt4">Timeline</h1>
+      <h1 class="tc f4 f4-ns fw6 dark-gray mb1 mt4">Timeline</h1>
 
       <!-- Timeline Layout (rendered only once) -->
       {{ .Render "splash-summary-timeline"}}

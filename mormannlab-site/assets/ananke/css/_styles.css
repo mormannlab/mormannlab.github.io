@@ -295,7 +295,7 @@
 /* Carousel container */
 .slider {
   position: relative;
-  left: 15px;
+  left: 20px;
   width: 400px;
   height: 400px;
   transform-style: preserve-3d;
@@ -324,7 +324,7 @@ body.no-scroll {
 /* Card wrapper */
 .research-card {
   position: center;
-  width: 85%;
+  width: 80%;
   height: 100%;
   background: white;
   border-radius: 1rem;
