@@ -358,13 +358,14 @@ body.no-scroll {
 }
 
 .image-wrapper img {
-  width: 120px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #efbc64;
+  border: none;
+  border-radius: 0;
   backface-visibility: hidden;
 }
+
 
 /* Title and description area */
 .text-wrapper {
@@ -387,7 +388,7 @@ body.no-scroll {
 .text-wrapper p {
   text-align: justify;
   color: #333;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   line-height: 1.2;
   margin: 0;
   overflow: hidden;
