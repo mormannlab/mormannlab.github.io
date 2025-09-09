@@ -110,7 +110,7 @@
   <!-- Section for External Members -->
   {{ $external_members := where .Pages "Params.type" "external_member" }}
   {{ if $external_members }}
-    <aside class="flex flex-column justify-center items-center mt5">
+    <aside class="flex flex-column justify-center items-center mt5 mb6">
       <h2 class="f3 fw6 bb b--light-gray pb2 mb4">External Members</h2>
       {{ range $external_members }}
         <div class="relative profile-card mb4 bg-white br4 shadow-2 pa4 paper-box" style="margin: 15px auto; display: flex; align-items: stretch;">
@@ -155,6 +155,40 @@
     </aside>
   {{ end }}
 
+
+  <!-- Section for Alumni -->
+  {{ $alumni := sort (where .Pages "Params.type" "alumni") "Title" }}
+  {{ if $alumni }}
+    <aside class="mt6 mb6" style="max-width: 60%; margin: 0 auto;">
+      <h2 class="f3 fw6 bb b--light-gray pb2 mb4 tc">Alumni</h2>
+      <div class="flex flex-column items-start">
+        {{ range $alumni }}
+          <div class="flex items-center justify-between w-100 mb3">
+            <!-- Left: Name -->
+            <span class="bg-light-gray dark-gray br-pill pa2 ph3 f6 fw5">
+              {{ .Title }}
+            </span>
+
+            <!-- Right: Social Media Links -->
+            {{ with .Params.social_media }}
+              <div class="ananke-socials ml3">
+                {{ range . }}
+                  <a href="{{ .url }}" target="_blank" rel="noopener" class="link dib mr2" title="Connect on {{ .platform }}">
+                    {{ $icon := resources.Get (printf "ananke/socials/%s.svg" .platform | lower) }}
+                    {{ if $icon }}
+                      <span class="icon w2 h2">{{ $icon.Content | safeHTML }}</span>
+                    {{ else }}
+                      <span class="f6">{{ .platform | title }}</span>
+                    {{ end }}
+                  </a>
+                {{ end }}
+              </div>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    </aside>
+  {{ end }}
 
 
 
