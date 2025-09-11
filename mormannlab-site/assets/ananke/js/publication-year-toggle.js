@@ -1,37 +1,51 @@
-document.addEventListener('DOMContentLoaded', () => {
+// publication-year-toggle.js
 
-  function setupPublicationToggles() {
-    const isMobile = window.innerWidth <= 768;
+function handlePublicationListVisibility() {
+  const isMobile = window.innerWidth <= 768;
 
-    document.querySelectorAll('.year-toggle').forEach(header => {
-      // Remove old click listeners to avoid duplicates
-      header.replaceWith(header.cloneNode(true));
+  // Set initial collapsed/expanded state
+  document.querySelectorAll('.publication-list').forEach(list => {
+    list.style.display = isMobile ? 'none' : 'block';
+  });
+
+  // Attach click listeners for toggling
+  document.querySelectorAll('.year-toggle').forEach(header => {
+    // Remove old listeners safely
+    header.removeEventListener('click', togglePublicationList);
+    header.removeEventListener('touchstart', togglePublicationList);
+
+    // Add new listener for click
+    header.addEventListener('click', togglePublicationList);
+
+    // Optional: prevent toggle on swipe
+    header.addEventListener('touchstart', function(e) {
+      // Store initial touch position
+      this._touchStartY = e.touches[0].clientY;
     });
 
-    document.querySelectorAll('.year-toggle').forEach(header => {
-      header.addEventListener('click', () => {
-        const list = header.nextElementSibling;
-        if (!list || !list.classList.contains('publication-list')) return;
+    header.addEventListener('touchend', function(e) {
+      const touchEndY = e.changedTouches[0].clientY;
+      const diff = Math.abs(touchEndY - this._touchStartY);
 
-        // Toggle visibility
-        if (list.style.display === 'block') {
-          list.style.display = 'none';
-        } else {
-          list.style.display = 'block';
-        }
-      });
+      // If finger didn’t move much, treat as tap
+      if (diff < 10) {
+        togglePublicationList.call(this, e);
+      }
     });
+  });
+}
 
-    // Initial state: collapsed on mobile, visible on desktop
-    document.querySelectorAll('.publication-list').forEach(list => {
-      list.style.display = isMobile ? 'none' : 'block';
-    });
-  }
+function togglePublicationList(event) {
+  const list = event.currentTarget.nextElementSibling;
 
-  // Run on load
-  setupPublicationToggles();
+  if (!list || !list.classList.contains('publication-list')) return;
 
-  // Run on resize
-  window.addEventListener('resize', setupPublicationToggles);
+  // Only toggle via tap/click
+  list.style.display = list.style.display === 'block' ? 'none' : 'block';
+}
 
-});
+// Run on page load
+document.addEventListener('DOMContentLoaded', handlePublicationListVisibility);
+
+// Run on resize to maintain desktop/mobile behavior
+window.addEventListener('resize', handlePublicationListVisibility);
