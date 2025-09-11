@@ -159,7 +159,7 @@
   <!-- Section for Alumni -->
   {{ $alumni := sort (where .Pages "Params.type" "alumni") "Title" }}
   {{ if $alumni }}
-    <aside class="mt6 mb6" style="max-width: 100%; margin: 0 auto;">
+    <aside class="mt6 mb6">
       <h2 class="f3 fw6 bb b--light-gray pb2 mb4 tc">Alumni</h2>
       <div class="w-100 w-60-l center">
         {{ range $alumni }}
