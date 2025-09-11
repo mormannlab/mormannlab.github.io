@@ -1,50 +1,64 @@
 // publication-year-toggle.js
 
-function handlePublicationListVisibility() {
-  const isMobile = window.innerWidth <= 768;
+document.addEventListener('DOMContentLoaded', () => {
+  const yearHeaders = document.querySelectorAll('.year-toggle');
+  const publicationLists = document.querySelectorAll('.publication-list');
 
-  // Show all on desktop, hide all on mobile initially
-  document.querySelectorAll('.publication-list').forEach(list => {
-    list.dataset.expanded = isMobile ? 'false' : 'true';
-    list.style.display = isMobile ? 'none' : 'block';
-  });
+  // Initialize publication lists for mobile/desktop
+  function setInitialState() {
+    const isMobile = window.innerWidth <= 768;
+    publicationLists.forEach(list => {
+      if (isMobile) {
+        list.style.display = 'none';
+        list.dataset.expanded = 'false';
+      } else {
+        list.style.display = 'block';
+        list.dataset.expanded = 'true';
+      }
+    });
+  }
 
-  // Add event listeners for toggling
-  document.querySelectorAll('.year-toggle').forEach(yearHeader => {
-    yearHeader.removeEventListener('click', togglePublicationListWithTouchCheck);
+  setInitialState();
 
-    // Always use click for simplicity
-    yearHeader.addEventListener('click', togglePublicationListWithTouchCheck);
+  // Handle window resize
+  window.addEventListener('resize', setInitialState);
 
-    // Mobile: track touch movements to prevent accidental toggles
-    if (isMobile) {
-      let startY = 0;
-      yearHeader.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-      });
-
-      yearHeader.addEventListener('touchend', (e) => {
-        const endY = e.changedTouches[0].clientY;
-        const diff = Math.abs(endY - startY);
-        if (diff < 10) { // treat as tap only if finger didn't move much
-          togglePublicationListWithTouchCheck({ currentTarget: yearHeader });
-        }
-      });
+  // Toggle function
+  function togglePublicationList(list) {
+    const expanded = list.dataset.expanded === 'true';
+    if (expanded) {
+      list.style.display = 'none';
+      list.dataset.expanded = 'false';
+    } else {
+      list.style.display = 'block';
+      list.dataset.expanded = 'true';
     }
+  }
+
+  // Attach both click and touch handlers
+  yearHeaders.forEach(header => {
+    let startY = 0;
+
+    // Touchstart: record initial Y position
+    header.addEventListener('touchstart', (e) => {
+      startY = e.touches[0].clientY;
+    });
+
+    // Touchend: check movement threshold to distinguish scroll vs tap
+    header.addEventListener('touchend', (e) => {
+      const endY = e.changedTouches[0].clientY;
+      const delta = Math.abs(endY - startY);
+      if (delta < 10) {
+        // Treat as tap
+        const list = header.nextElementSibling;
+        togglePublicationList(list);
+      }
+    });
+
+    // Click handler (desktop)
+    header.addEventListener('click', (e) => {
+      const list = header.nextElementSibling;
+      togglePublicationList(list);
+    });
   });
-}
-
-function togglePublicationListWithTouchCheck(event) {
-  const publicationList = event.currentTarget.nextElementSibling;
-  if (!publicationList) return;
-
-  const expanded = publicationList.dataset.expanded === 'true';
-  publicationList.style.display = expanded ? 'none' : 'block';
-  publicationList.dataset.expanded = expanded ? 'false' : 'true';
-}
-
-// Run on page load
-document.addEventListener('DOMContentLoaded', handlePublicationListVisibility);
-
-// Run on window resize
-window.addEventListener('resize', handlePublicationListVisibility);
+});
