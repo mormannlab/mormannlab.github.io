@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let inScrollToRotate = false;
   let lastRotateTime = 0;
 
+  // Touch state
+  let touchStartY = 0;
+  let touchEndY = 0;
+
   // Prevent scrolling during snapping
   function blockScroll(e) {
     e.preventDefault();
@@ -74,8 +78,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const windowCenterY = window.innerHeight / 2;
     const offsetFromCenter = sliderCenterY - windowCenterY;
 
-    const comingFromTop = rect.top < 0 && rect.bottom > 0; // entering from top
-    const comingFromBottom = rect.bottom > window.innerHeight && rect.top < window.innerHeight; // entering from bottom
+    const comingFromTop = rect.top < 0 && rect.bottom > 0;
+    const comingFromBottom = rect.bottom > window.innerHeight && rect.top < window.innerHeight;
     const isCentered = Math.abs(offsetFromCenter) < 5;
 
     if ((comingFromTop || comingFromBottom) && !isCentered) {
@@ -83,20 +87,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-function resetSnapIfSliderIsGone() {
-  const rect = slider.getBoundingClientRect();
+  function resetSnapIfSliderIsGone() {
+    const rect = slider.getBoundingClientRect();
 
-  const mostlyAbove = rect.bottom < window.innerHeight * 0.25;
-  const mostlyBelow = rect.top > window.innerHeight * 0.75;
+    const mostlyAbove = rect.bottom < window.innerHeight * 0.25;
+    const mostlyBelow = rect.top > window.innerHeight * 0.75;
 
-  if (mostlyAbove || mostlyBelow) {
-    snappedThisPass = false;
-    inScrollToRotate = false;
-    document.body.classList.remove("no-scroll");
-    slider.classList.remove("active-rotate");
+    if (mostlyAbove || mostlyBelow) {
+      snappedThisPass = false;
+      inScrollToRotate = false;
+      document.body.classList.remove("no-scroll");
+      slider.classList.remove("active-rotate");
+    }
   }
-}
-
 
   function exitScrollToRotate(direction) {
     inScrollToRotate = false;
@@ -118,10 +121,8 @@ function resetSnapIfSliderIsGone() {
     });
   }
 
-  function handleRotation(e) {
-    const delta = e.deltaY;
+  function handleRotation(delta) {
     const now = Date.now();
-
     if (now - lastRotateTime < 250) return;
     lastRotateTime = now;
 
@@ -136,18 +137,35 @@ function resetSnapIfSliderIsGone() {
     } else if (delta < 0 && currentIndex === 0) {
       exitScrollToRotate(-1);
     }
-
-    e.preventDefault();
   }
 
+  // Desktop wheel
+  window.addEventListener("wheel", (e) => {
+    if (inScrollToRotate && !snapping) {
+      handleRotation(e.deltaY);
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  // Mobile touch
+  window.addEventListener("touchstart", (e) => {
+    if (!inScrollToRotate) return;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  window.addEventListener("touchend", (e) => {
+    if (!inScrollToRotate || snapping) return;
+    touchEndY = e.changedTouches[0].clientY;
+    let deltaY = touchStartY - touchEndY;
+
+    if (Math.abs(deltaY) > 30) {
+      handleRotation(deltaY);
+    }
+  }, { passive: false });
+
+  // Snap check
   window.addEventListener("scroll", () => {
     handleSnapTrigger();
     resetSnapIfSliderIsGone();
   });
-
-  window.addEventListener("wheel", (e) => {
-    if (inScrollToRotate && !snapping) {
-      handleRotation(e);
-    }
-  }, { passive: false });
 });
