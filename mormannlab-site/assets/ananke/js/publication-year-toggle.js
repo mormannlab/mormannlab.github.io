@@ -1,35 +1,36 @@
 // publication-year-toggle.js
 
+// Keep track of last window width to prevent unnecessary resets
+let lastWindowWidth = window.innerWidth;
+
+// Function to handle initial visibility and event listeners
 function handlePublicationListVisibility() {
   const isMobile = window.innerWidth <= 768;
 
-  document.querySelectorAll('.publication-list').forEach(list => {
-    list.style.display = isMobile ? 'none' : 'block';
-  });
+  // Only reset lists if window width changed
+  if (window.innerWidth !== lastWindowWidth) {
+    lastWindowWidth = window.innerWidth;
 
-  document.querySelectorAll('.year-toggle').forEach(header => {
-    // Remove old listeners
-    header.removeEventListener('click', togglePublicationList);
-    header.removeEventListener('touchend', togglePublicationList);
+    document.querySelectorAll('.publication-list').forEach(list => {
+      if (isMobile) {
+        list.style.display = 'none'; // Hide by default on mobile
+      } else {
+        list.style.display = 'block'; // Show on desktop
+      }
+    });
+  }
 
-    if (isMobile) {
-      // Only attach touchend for tap
-      header.addEventListener('touchend', function(e) {
-        e.preventDefault();  // Prevent accidental click events or scrolling interference
-        togglePublicationList({ target: header });
-      });
-    } else {
-      // Desktop: normal click
-      header.addEventListener('click', togglePublicationList);
-    }
+  // Add toggle click listeners
+  document.querySelectorAll('.year-toggle').forEach(yearHeader => {
+    // Remove any existing listener to prevent duplicates
+    yearHeader.removeEventListener('click', togglePublicationList);
+    yearHeader.addEventListener('click', togglePublicationList);
   });
 }
 
-// Simple toggle
+// Function to toggle a single publication list
 function togglePublicationList(event) {
-  const publicationList = event.target.nextElementSibling;
-  if (!publicationList) return;
-
+  const publicationList = event.currentTarget.nextElementSibling;
   if (publicationList.style.display === 'none' || publicationList.style.display === '') {
     publicationList.style.display = 'block';
   } else {
@@ -37,5 +38,8 @@ function togglePublicationList(event) {
   }
 }
 
+// Initialize on page load
 document.addEventListener('DOMContentLoaded', handlePublicationListVisibility);
+
+// Update on window resize (only affects display if width actually changes)
 window.addEventListener('resize', handlePublicationListVisibility);
