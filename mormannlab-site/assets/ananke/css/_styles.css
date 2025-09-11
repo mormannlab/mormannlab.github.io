@@ -741,7 +741,11 @@ body.no-scroll {
 
 /* === PUBLICATION IN FULL VIEW ===*/
 .publication-list {
-  display: block; /* Always visible on larger screens */
+  display: block; /* default collapsed */
+}
+
+.publication-list.expanded {
+  display: none; /* expanded when toggled */
 }
 
 .publication-box {
@@ -848,9 +852,12 @@ body.no-scroll {
 
   /* Initially hide all publication lists in mobile */
   .publication-list {
-    display: none; /* Hide publications by default on mobile */
+    display: none;
   }
 
+  .publication-list.expanded {
+    display: block; /* expanded when toggled */
+  }
   
   /* Publication Box: Full width and stacked sections */
   .publication-box {
