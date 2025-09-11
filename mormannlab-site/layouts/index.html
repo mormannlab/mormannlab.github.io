@@ -21,7 +21,7 @@
   {{ end }}
   
   <!-- 3D Research Slider (now using content/en/home/*.md) -->
-  <section class="flex flex-column justify-center items-center mt2 mt4-ns mb6 ph3">
+  <section class="flex flex-column justify-center items-center mt4 mt5-ns mb6 ph3">
     {{ $homePages := where site.RegularPages "Section" "research" }}
     {{ $sortedPages := sort $homePages "Params.priority" }}
     <div id="slider" class="slider" style='--quantity: {{ len $sortedPages }}'>
