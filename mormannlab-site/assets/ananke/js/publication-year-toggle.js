@@ -1,45 +1,65 @@
 // publication-year-toggle.js
 
-// Keep track of last window width to prevent unnecessary resets
-let lastWindowWidth = window.innerWidth;
+document.addEventListener('DOMContentLoaded', () => {
+  const yearHeaders = document.querySelectorAll('.year-toggle');
 
-// Function to handle initial visibility and event listeners
-function handlePublicationListVisibility() {
-  const isMobile = window.innerWidth <= 768;
+  yearHeaders.forEach(header => {
+    let touchStartY = 0;
+    let touchMoved = false;
 
-  // Only reset lists if window width changed
-  if (window.innerWidth !== lastWindowWidth) {
-    lastWindowWidth = window.innerWidth;
+    // Handle touch events for mobile
+    header.addEventListener('touchstart', e => {
+      touchStartY = e.touches[0].clientY;
+      touchMoved = false;
+    });
 
+    header.addEventListener('touchmove', e => {
+      if (Math.abs(e.touches[0].clientY - touchStartY) > 10) {
+        touchMoved = true; // User is scrolling, don't toggle
+      }
+    });
+
+    header.addEventListener('touchend', e => {
+      // Only toggle if touch ended on the header itself (not a child)
+      if (!touchMoved && e.target === header) {
+        toggleList(header);
+      }
+    });
+
+    // Handle click for desktop
+    header.addEventListener('click', e => {
+      // Only toggle if click is on the header itself
+      if (e.target === header) {
+        toggleList(header);
+      }
+    });
+  });
+
+  // Initialize all lists as collapsed on mobile, expanded on desktop
+  function handlePublicationListVisibility() {
+    const isMobile = window.innerWidth <= 768;
     document.querySelectorAll('.publication-list').forEach(list => {
       if (isMobile) {
-        list.style.display = 'none'; // Hide by default on mobile
+        list.style.display = 'none';
+        list.setAttribute('data-expanded', false);
       } else {
-        list.style.display = 'block'; // Show on desktop
+        list.style.display = 'block';
+        list.setAttribute('data-expanded', true);
       }
     });
   }
 
-  // Add toggle click listeners
-  document.querySelectorAll('.year-toggle').forEach(yearHeader => {
-    // Remove any existing listener to prevent duplicates
-    yearHeader.removeEventListener('click', togglePublicationList);
-    yearHeader.addEventListener('click', togglePublicationList);
-  });
-}
-
-// Function to toggle a single publication list
-function togglePublicationList(event) {
-  const publicationList = event.currentTarget.nextElementSibling;
-  if (publicationList.style.display === 'none' || publicationList.style.display === '') {
-    publicationList.style.display = 'block';
-  } else {
-    publicationList.style.display = 'none';
+  // Toggle visibility of the list associated with the header
+  function toggleList(header) {
+    const list = header.nextElementSibling;
+    const expanded = list.getAttribute('data-expanded') === 'true';
+    list.style.display = expanded ? 'none' : 'block';
+    list.setAttribute('data-expanded', !expanded);
   }
-}
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', handlePublicationListVisibility);
+  // Run on load
+  handlePublicationListVisibility();
 
-// Update on window resize (only affects display if width actually changes)
-window.addEventListener('resize', handlePublicationListVisibility);
+  // Update on window resize
+  window.addEventListener('resize', handlePublicationListVisibility);
+});
