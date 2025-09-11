@@ -850,6 +850,7 @@ body.no-scroll {
   .publication-list {
     display: none; /* Hide publications by default on mobile */
   }
+
   
   /* Publication Box: Full width and stacked sections */
   .publication-box {
