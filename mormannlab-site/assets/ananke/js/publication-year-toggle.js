@@ -2,63 +2,41 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const yearHeaders = document.querySelectorAll('.year-toggle');
-  const publicationLists = document.querySelectorAll('.publication-list');
 
-  // Initialize publication lists for mobile/desktop
-  function setInitialState() {
-    const isMobile = window.innerWidth <= 768;
-    publicationLists.forEach(list => {
-      if (isMobile) {
-        list.style.display = 'none';
-        list.dataset.expanded = 'false';
+  // Function to check if we are on mobile
+  const isMobile = () => window.innerWidth <= 768;
+
+  // Initially set visibility of publication lists
+  const setInitialVisibility = () => {
+    document.querySelectorAll('.publication-list').forEach(list => {
+      if (isMobile()) {
+        list.style.display = 'none'; // collapsed by default on mobile
       } else {
-        list.style.display = 'block';
-        list.dataset.expanded = 'true';
+        list.style.display = 'block'; // always visible on desktop
       }
     });
-  }
+  };
 
-  setInitialState();
+  setInitialVisibility();
 
-  // Handle window resize
-  window.addEventListener('resize', setInitialState);
+  // Toggle function: expand/collapse the corresponding list
+  const toggleList = (event) => {
+    const publicationList = event.currentTarget.nextElementSibling;
+    if (!publicationList) return;
 
-  // Toggle function
-  function togglePublicationList(list) {
-    const expanded = list.dataset.expanded === 'true';
-    if (expanded) {
-      list.style.display = 'none';
-      list.dataset.expanded = 'false';
+    if (publicationList.style.display === 'none' || publicationList.style.display === '') {
+      publicationList.style.display = 'block';
     } else {
-      list.style.display = 'block';
-      list.dataset.expanded = 'true';
+      publicationList.style.display = 'none';
     }
-  }
+  };
 
-  // Attach both click and touch handlers
+  // Attach click listeners to each year header
   yearHeaders.forEach(header => {
-    let startY = 0;
-
-    // Touchstart: record initial Y position
-    header.addEventListener('touchstart', (e) => {
-      startY = e.touches[0].clientY;
-    });
-
-    // Touchend: check movement threshold to distinguish scroll vs tap
-    header.addEventListener('touchend', (e) => {
-      const endY = e.changedTouches[0].clientY;
-      const delta = Math.abs(endY - startY);
-      if (delta < 10) {
-        // Treat as tap
-        const list = header.nextElementSibling;
-        togglePublicationList(list);
-      }
-    });
-
-    // Click handler (desktop)
-    header.addEventListener('click', (e) => {
-      const list = header.nextElementSibling;
-      togglePublicationList(list);
-    });
+    header.removeEventListener('click', toggleList); // remove old listener just in case
+    header.addEventListener('click', toggleList);
   });
+
+  // Handle window resize to update visibility
+  window.addEventListener('resize', setInitialVisibility);
 });
