@@ -159,36 +159,39 @@
   <!-- Section for Alumni -->
   {{ $alumni := sort (where .Pages "Params.type" "alumni") "Title" }}
   {{ if $alumni }}
-    <aside class="mt6 mb6" style="max-width: 60%; margin: 0 auto;">
+    <aside class="mt6 mb6">
       <h2 class="f3 fw6 bb b--light-gray pb2 mb4 tc">Alumni</h2>
-      <div class="flex flex-column items-start">
+      <div class="w-100 w-60-l center">
         {{ range $alumni }}
-          <div class="flex items-center justify-between w-100 mb3 pb2 bb b--light-gray">
+          <div class="flex items-center mb4 pb3 bb b--light-gray">
             <!-- Left: Name -->
-            <span class="pa2 ph3 f6 fw6">
-              {{ .Title }}
-            </span>
+            <div style="flex: 3; text-align: left;">
+              <h3 class="f5 fw6 mb1 near-black">{{ .Title }}</h3>
+            </div>
 
             <!-- Right: Social Media Links -->
-            {{ with .Params.social_media }}
-              <div class="ananke-socials ml3">
-                {{ range . }}
-                  <a href="{{ .url }}" target="_blank" rel="noopener" class="link dib mr2" title="Connect on {{ .platform }}">
-                    {{ $icon := resources.Get (printf "ananke/socials/%s.svg" .platform | lower) }}
-                    {{ if $icon }}
-                      <span class="icon w2 h2">{{ $icon.Content | safeHTML }}</span>
-                    {{ else }}
-                      <span class="f6">{{ .platform | title }}</span>
-                    {{ end }}
-                  </a>
-                {{ end }}
-              </div>
-            {{ end }}
+            <div style="flex: 1; text-align: right;">
+              {{ with .Params.social_media }}
+                <div class="ananke-socials">
+                  {{ range . }}
+                    <a href="{{ .url }}" target="_blank" rel="noopener" class="link dib mr2" title="Connect on {{ .platform }}">
+                      {{ $icon := resources.Get (printf "ananke/socials/%s.svg" .platform | lower) }}
+                      {{ if $icon }}
+                        <span class="icon w2 h2">{{ $icon.Content | safeHTML }}</span>
+                      {{ else }}
+                        <span class="f6">{{ .platform | title }}</span>
+                      {{ end }}
+                    </a>
+                  {{ end }}
+                </div>
+              {{ end }}
+            </div>
           </div>
         {{ end }}
       </div>
     </aside>
   {{ end }}
+
 
 
 
