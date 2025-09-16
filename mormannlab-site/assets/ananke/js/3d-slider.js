@@ -70,22 +70,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500); // Adjust if you change scroll speed
   }
 
+
   function handleSnapTrigger() {
     if (snapping || snappedThisPass) return;
 
     const rect = slider.getBoundingClientRect();
-    const sliderCenterY = rect.top + rect.height / 2;
-    const windowCenterY = window.innerHeight / 2;
-    const offsetFromCenter = sliderCenterY - windowCenterY;
+    const windowHeight = window.innerHeight;
 
-    const comingFromTop = rect.top < 0 && rect.bottom > 0;
-    const comingFromBottom = rect.bottom > window.innerHeight && rect.top < window.innerHeight;
-    const isCentered = Math.abs(offsetFromCenter) < 5;
+    // How much of the slider is visible?
+    const visibleHeight = Math.min(rect.bottom, windowHeight) - Math.max(rect.top, 0);
+    const sliderVisibleRatio = visibleHeight / rect.height;
 
-    if ((comingFromTop || comingFromBottom) && !isCentered) {
-      scrollToCenter(slider);
+    // Only snap if at least 50% of the slider is visible
+    if (sliderVisibleRatio >= 0.32) {
+      const sliderCenterY = rect.top + rect.height / 2;
+      const windowCenterY = windowHeight / 2;
+      const offsetFromCenter = sliderCenterY - windowCenterY;
+
+      const isCentered = Math.abs(offsetFromCenter) < 5;
+
+      if (!isCentered) {
+        scrollToCenter(slider);
+      }
     }
   }
+
 
   function resetSnapIfSliderIsGone() {
     const rect = slider.getBoundingClientRect();
